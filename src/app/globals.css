@@ -588,17 +588,40 @@ a:hover {
 }
 
 /* ===================================================================
-   HERO SECTION (Split Fade Background Architecture)
+   HERO SECTION — Editorial full-bleed composition
+   Grid fix: body grid is blocked at section level.
+   A local grid pseudo-element is applied only to the LEFT text area.
    =================================================================== */
 
 .hero-section {
   position: relative;
-  min-height: 580px;
+  min-height: 640px;
   display: flex;
   align-items: center;
-  padding: 5.5rem 0 5rem 0;
-  background-color: transparent;
+  padding: 6rem 0 5.5rem 0;
+  /* Solid white: blocks body grid from bleeding through image mask */
+  background-color: var(--bg-page);
   overflow: hidden;
+  isolation: isolate;
+  /* Clear bottom edge: prevents image from visually bleeding into next section */
+  border-bottom: 1px solid var(--border-light);
+}
+
+/* Grid lives ONLY on the left text half — never touches the image */
+.hero-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  /* Grid confined to left 40% via mask — image side stays clean */
+  background-image:
+    linear-gradient(to right, var(--grid-line) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px);
+  background-size: var(--grid-size) var(--grid-size);
+  /* Fade the grid OUT as it approaches the image zone */
+  -webkit-mask-image: linear-gradient(to right, #000 0%, #000 30%, rgba(0,0,0,0.3) 50%, transparent 65%);
+  mask-image: linear-gradient(to right, #000 0%, #000 30%, rgba(0,0,0,0.3) 50%, transparent 65%);
+  pointer-events: none;
+  z-index: 0;
 }
 
 .hero-bg-container {
@@ -607,25 +630,27 @@ a:hover {
   pointer-events: none;
   overflow: hidden;
   z-index: 1;
-  -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 65%, rgba(0, 0, 0, 0.35) 85%, transparent 100%);
-  mask-image: linear-gradient(to bottom, #000 0%, #000 65%, rgba(0, 0, 0, 0.35) 85%, transparent 100%);
+  /* Bottom fade so image dissolves into page below */
+  -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 60%, rgba(0, 0, 0, 0.25) 85%, transparent 100%);
+  mask-image: linear-gradient(to bottom, #000 0%, #000 60%, rgba(0, 0, 0, 0.25) 85%, transparent 100%);
 }
 
 .hero-bg-image {
   position: absolute;
   top: 0;
   right: 0;
-  width: 58%;
+  width: 68%;
   height: 100%;
   background-size: cover;
   background-position: center right;
   background-repeat: no-repeat;
-  opacity: 0.96;
-  -webkit-mask-image: linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 0.06) 10%, rgba(0, 0, 0, 0.6) 28%, #000 48%);
-  mask-image: linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 0.06) 10%, rgba(0, 0, 0, 0.6) 28%, #000 48%);
+  opacity: 0.97;
+  /* Tighter left-edge fade: image becomes fully opaque sooner — no grid bleed zone */
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,0.4) 15%, rgba(0,0,0,0.85) 28%, #000 38%);
+  mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,0.4) 15%, rgba(0,0,0,0.85) 28%, #000 38%);
 }
 
-/* Obsolete white overlay removed so technical grid background is never obstructed */
+/* Not used — kept for backward compat */
 .hero-bg-fade {
   display: none;
 }
@@ -643,15 +668,15 @@ a:hover {
   max-width: 630px;
 }
 
-/* Hero title: Bricolage Grotesque — maximum display authority, visual centrepiece */
+/* Hero title: Bricolage Grotesque — editorial display centrepiece */
 .hero-title {
   font-family: var(--font-display);
-  font-size: clamp(2.65rem, 4.8vw, 3.85rem);
+  font-size: clamp(3rem, 5.5vw, 4.75rem);
   font-weight: 800;
-  line-height: 1.1;
-  letter-spacing: -0.04em;
+  line-height: 1.05;
+  letter-spacing: -0.045em;
   color: var(--text-primary);
-  margin-bottom: 1.25rem;
+  margin-bottom: 1.35rem;
 }
 
 .hero-title .highlight-text {
@@ -733,47 +758,149 @@ a:hover {
   box-shadow: 0 0 0 3px rgba(35, 134, 54, 0.2);
 }
 
-.metrics-strip {
-  background-color: var(--bg-subtle);
+/* ===================================================================
+   STATS STRIP — Premium horizontal credential bar
+   =================================================================== */
+
+.stats-strip {
+  background-color: var(--bg-page);
   border-bottom: 1px solid var(--border-light);
-  padding: 2.25rem 0;
+  padding: 0;
+  position: relative;
+  z-index: 2;
 }
 
-.metrics-grid {
+/* Soft white fade from hero into the strip — top edge */
+.stats-strip::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 28px;
+  background: linear-gradient(to bottom, var(--bg-page), transparent);
+  pointer-events: none;
+  z-index: 3;
+}
+
+/* Soft white fade from strip into next section — bottom edge */
+.stats-strip::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 28px;
+  background: linear-gradient(to top, var(--bg-page), transparent);
+  pointer-events: none;
+  z-index: 3;
+}
+
+.stats-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 1.5rem;
 }
 
-.metric-item {
+.stat-card {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1.25rem;
+  padding: 2rem 2rem;
+  border-right: 1px solid var(--border-light);
+  background: var(--bg-page);
+  transition: background-color var(--transition-fast);
+  position: relative;
+}
+
+.stat-card:last-child {
+  border-right: none;
+}
+
+.stat-card:hover {
+  background: var(--brand-orange-light);
+}
+
+/* Orange left accent border on hover */
+.stat-card::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 20%;
+  bottom: 20%;
+  width: 3px;
+  background: var(--brand-orange);
+  border-radius: 0 2px 2px 0;
+  opacity: 0;
+  transition: opacity var(--transition-fast);
+}
+
+.stat-card:hover::before {
+  opacity: 1;
+}
+
+/* Left: icon circle */
+.stat-icon-circle {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--brand-orange-light);
+  border: 1px solid var(--brand-orange-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--brand-orange);
+  flex-shrink: 0;
+  transition: background-color var(--transition-fast), color var(--transition-fast);
+}
+
+.stat-card:hover .stat-icon-circle {
+  background: var(--brand-orange);
+  color: #fff;
+  border-color: var(--brand-orange);
+}
+
+/* Right: number + label */
+.stat-text {
   display: flex;
   flex-direction: column;
-  padding-left: 1rem;
-  border-left: 3px solid var(--brand-orange);
+  gap: 0.2rem;
 }
 
-/* Metrics: Bricolage Grotesque — big numbers deserve display authority */
-.metric-value {
+.stat-value {
   font-family: var(--font-display);
-  font-size: 2.15rem;
+  font-size: 1.85rem;
   font-weight: 800;
   color: var(--text-primary);
-  line-height: 1.05;
+  line-height: 1;
   letter-spacing: -0.04em;
+  font-variant-numeric: tabular-nums;
 }
 
-.metric-value span {
+.stat-value span {
   color: var(--brand-orange);
+  font-size: 1.25rem;
+  font-weight: 700;
 }
 
-/* Metric labels: DM Sans — small supporting descriptor */
-.metric-label {
+.stat-label {
   font-family: var(--font-body);
-  font-size: 0.875rem;
-  color: var(--text-muted);
+  font-size: 0.8125rem;
   font-weight: 500;
-  margin-top: 0.25rem;
+  color: var(--text-muted);
+  line-height: 1.4;
 }
+
+/* Remove old dark card variant — replaced by unified design */
+.stat-card--dark {
+  background: var(--bg-page);
+}
+
+.stat-card--dark .stat-value { color: var(--text-primary); }
+.stat-card--dark .stat-value span { color: var(--brand-orange); }
+.stat-card--dark .stat-label { color: var(--text-muted); }
+.stat-icon { color: var(--brand-orange); margin-bottom: 0; }
+
 
 /* ===================================================================
    PRICING CARDS
@@ -1467,3 +1594,296 @@ textarea.form-control {
     scroll-behavior: auto !important;
   }
 }
+
+/* ===================================================================
+   SERVICES EDITORIAL LAYOUT
+   =================================================================== */
+
+.services-editorial-header {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2.5rem;
+  align-items: flex-end;
+  margin-bottom: 3.5rem;
+}
+
+.services-editorial-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.25rem, 4vw, 3.5rem);
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -0.04em;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.services-editorial-desc {
+  font-family: var(--font-body);
+  font-size: 1.0625rem;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  margin-bottom: 1.25rem;
+}
+
+.services-editorial-link {
+  font-family: var(--font-body);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 600;
+  font-size: 0.9375rem;
+  color: var(--brand-orange);
+  transition: color var(--transition-fast), gap var(--transition-fast);
+}
+
+.services-editorial-link:hover {
+  color: var(--brand-orange-hover);
+  gap: 0.75rem;
+}
+
+/* Service Icon Grid */
+.services-icon-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border-top: 1px solid var(--border-light);
+  border-left: 1px solid var(--border-light);
+}
+
+.service-icon-card {
+  padding: 2rem 1.75rem;
+  border-right: 1px solid var(--border-light);
+  border-bottom: 1px solid var(--border-light);
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  transition: background-color var(--transition-fast);
+}
+
+.service-icon-card:hover {
+  background-color: var(--bg-subtle);
+}
+
+.service-icon-card:hover .service-icon-wrap {
+  background-color: var(--brand-orange);
+  color: #fff;
+}
+
+.service-icon-wrap {
+  width: 52px;
+  height: 52px;
+  border-radius: var(--radius-md);
+  background-color: var(--brand-orange-light);
+  color: var(--brand-orange);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color var(--transition-fast), color var(--transition-fast);
+  flex-shrink: 0;
+}
+
+.service-icon-title {
+  font-family: var(--font-body);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  margin: 0;
+}
+
+.service-icon-desc {
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--text-muted);
+  margin: 0;
+  flex-grow: 1;
+}
+
+.service-icon-link {
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--brand-orange);
+  transition: color var(--transition-fast);
+  margin-top: auto;
+}
+
+.service-icon-link:hover {
+  color: var(--brand-orange-hover);
+}
+
+/* ===================================================================
+   ABOUT EDITORIAL SPLIT
+   =================================================================== */
+
+.about-editorial-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.25fr;
+  gap: 3.5rem;
+  align-items: center;
+}
+
+.about-editorial-left {}
+
+.about-editorial-right {}
+
+/* ===================================================================
+   CTA BANNER — Premium close section
+   =================================================================== */
+
+.cta-banner {
+  position: relative;
+  background: var(--text-primary);
+  border-radius: var(--radius-lg);
+  padding: 4rem 3.5rem;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 2rem;
+}
+
+.cta-banner-content {
+  position: relative;
+  z-index: 2;
+}
+
+.cta-banner-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.75rem, 3.5vw, 2.75rem);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.035em;
+  color: #ffffff;
+  margin-bottom: 1rem;
+}
+
+.cta-banner-title span {
+  color: var(--brand-orange);
+}
+
+.cta-banner-desc {
+  font-family: var(--font-body);
+  font-size: 1.0625rem;
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.55);
+  max-width: 520px;
+  margin-bottom: 2rem;
+}
+
+.cta-banner-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.85rem;
+  align-items: center;
+}
+
+/* Override button styles inside dark banner */
+.cta-banner .btn-secondary {
+  background: transparent;
+  border-color: rgba(255,255,255,0.2);
+  color: rgba(255,255,255,0.8);
+}
+
+.cta-banner .btn-secondary:hover {
+  background: rgba(255,255,255,0.08);
+  border-color: rgba(255,255,255,0.35);
+  color: #fff;
+}
+
+/* Decorative concentric ring system */
+.cta-banner-decoration {
+  position: absolute;
+  right: -4rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 380px;
+  height: 380px;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.cta-deco-ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.cta-deco-ring--1 {
+  width: 200px;
+  height: 200px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.cta-deco-ring--2 {
+  width: 300px;
+  height: 300px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.cta-deco-ring--3 {
+  width: 380px;
+  height: 380px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-color: rgba(232, 93, 4, 0.08);
+}
+
+/* ===================================================================
+   RESPONSIVE — NEW EDITORIAL MODULES
+   =================================================================== */
+
+@media (max-width: 1024px) {
+  .services-icon-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .services-editorial-header {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  .about-editorial-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  .cta-banner {
+    grid-template-columns: 1fr;
+    padding: 3rem 2rem;
+  }
+  .cta-banner-decoration {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .services-icon-grid {
+    grid-template-columns: 1fr;
+  }
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .services-editorial-title {
+    font-size: clamp(2rem, 6vw, 2.75rem);
+  }
+  .hero-title {
+    font-size: clamp(2.5rem, 8vw, 3.5rem);
+  }
+}
+
+@media (max-width: 480px) {
+  .stats-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  .cta-banner {
+    padding: 2.5rem 1.5rem;
+  }
+}
+

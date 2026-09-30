@@ -2,32 +2,39 @@ import React from 'react';
 import Link from 'next/link';
 import Button from '@/components/Button';
 import SectionHeading from '@/components/SectionHeading';
-import ServiceCard from '@/components/ServiceCard';
 import PackageCard from '@/components/PackageCard';
 
 export default function HomePage() {
   return (
     <>
-      {/* HERO SECTION */}
+      {/* ================================================================
+          HERO — Full editorial composition
+          ================================================================ */}
       <section className="hero-section">
-        {/* Half-side Background Image with Smooth Gradient Fade */}
+        {/* Background image: full-bleed right, fades into page */}
         <div className="hero-bg-container" aria-hidden="true">
           <div className="hero-bg-image" style={{ backgroundImage: "url('/assets/hero-bg.jpg')" }} />
-          <div className="hero-bg-fade" />
         </div>
 
         <div className="container hero-container">
+          {/* LEFT: Editorial text column */}
           <div className="hero-content">
             <div className="badge">
               <span className="badge-dot"></span>
               Technology &amp; Business Management
             </div>
+
             <h1 className="hero-title">
-              Innovate <span className="highlight-text">Possibilities</span>
+              Innovate<br />
+              <span className="highlight-text">Possibilities</span>
             </h1>
+
             <p className="hero-lead">
-              People, Cloud-Based Bookkeeping and Business Management Solutions designed for growing enterprises seeking scalable digital infrastructure.
+              People, Cloud-Based Bookkeeping and Business Management
+              Solutions designed for growing enterprises seeking scalable
+              digital infrastructure.
             </p>
+
             <div className="hero-cta-group">
               <Button href="/contact" variant="primary" size="lg" id="heroPrimaryCta">
                 Get Started
@@ -39,30 +46,9 @@ export default function HomePage() {
                 Explore Services
               </Button>
             </div>
-
-            <div className="hero-highlights-row">
-              <div className="hero-highlight-item">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" width="16" height="16" aria-hidden="true">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-                </svg>
-                Cloud Bookkeeping
-              </div>
-              <div className="hero-highlight-item">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" width="16" height="16" aria-hidden="true">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-                </svg>
-                Custom Software &amp; AI
-              </div>
-              <div className="hero-highlight-item">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" width="16" height="16" aria-hidden="true">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-                </svg>
-                24x7 Dedicated Support
-              </div>
-            </div>
           </div>
 
-          {/* Floating Live Enterprise Status Pill */}
+          {/* RIGHT: Floating status pill, anchored in image zone */}
           <div className="hero-badge-floating" aria-hidden="true">
             <div className="hero-floating-pill">
               <span className="live-pulse"></span>
@@ -72,95 +58,160 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* CURATED SERVICES PREVIEW */}
-      <section className="section">
+      {/* ================================================================
+          STATS STRIP — Credential bar: clean, consistent, brand-orange
+          ================================================================ */}
+      <section className="stats-strip" aria-label="Company highlights">
         <div className="container">
-          <SectionHeading
-            badge="Core Solutions"
-            title="Our"
-            highlight="Services"
-            subtitle="Empowering businesses through innovative technology, custom engineering, and reliable digital systems."
-          />
+          <div className="stats-grid">
 
-          <div className="grid-2">
-            <ServiceCard
-              title="(SAAS) apps with AI"
-              description="With SAAS applications, we automate business workflows integrating with Advanced Artificial Intelligence to automate industries and predict future endeavors."
-              tags={['Workflow Automation', 'AI Integration', 'SaaS']}
-              actionHref="/services"
-              actionText="Learn More"
-              icon={
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="22" height="22">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
+            <div className="stat-card">
+              <div className="stat-icon-circle" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" width="22" height="22">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
                 </svg>
-              }
-            />
+              </div>
+              <div className="stat-text">
+                <div className="stat-value">6<span>+</span></div>
+                <div className="stat-label">Years of Innovation</div>
+              </div>
+            </div>
 
-            <ServiceCard
-              title="Design and Development"
-              description="We love designing creative stuffs and we have expertise in developing lightweight Web and Mobile Applications engineered for performance."
-              tags={['Web Apps', 'Mobile UI', 'Frontend']}
-              actionHref="/services"
-              actionText="Learn More"
-              icon={
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="22" height="22">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+            <div className="stat-card">
+              <div className="stat-icon-circle" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" width="22" height="22">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/>
                 </svg>
-              }
-            />
+              </div>
+              <div className="stat-text">
+                <div className="stat-value">50<span>+</span></div>
+                <div className="stat-label">Enterprise Clients</div>
+              </div>
+            </div>
 
-            <ServiceCard
-              title="Cloud-Based Bookkeeping"
-              description="Centralized financial data systems and business management software that streamline operations, auditing, and corporate bookkeeping."
-              tags={['Bookkeeping', 'Cloud ERP', 'Business Management']}
-              actionHref="/services"
-              actionText="Learn More"
-              icon={
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="22" height="22">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 00-9.78 2.096A4.001 4.001 0 003 15z" />
+            <div className="stat-card">
+              <div className="stat-icon-circle" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" width="22" height="22">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z"/>
                 </svg>
-              }
-            />
+              </div>
+              <div className="stat-text">
+                <div className="stat-value">24<span>/7</span></div>
+                <div className="stat-label">Dedicated Support</div>
+              </div>
+            </div>
 
-            <ServiceCard
-              title="Internet of Things (IoT)"
-              description="CyberDude Network's primary goal is to combine the hardware with software. Cyberdude products are integrated seamlessly with Internet of Things telemetry."
-              tags={['Hardware Integration', 'Telemetry', 'Connected Systems']}
-              actionHref="/services"
-              actionText="Learn More"
-              icon={
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="22" height="22">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z" />
+            <div className="stat-card">
+              <div className="stat-icon-circle" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" width="22" height="22">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 00-9.78 2.096A4.001 4.001 0 003 15z"/>
                 </svg>
-              }
-            />
-          </div>
+              </div>
+              <div className="stat-text">
+                <div className="stat-value">100<span>%</span></div>
+                <div className="stat-label">Cloud-Native Systems</div>
+              </div>
+            </div>
 
-          <div style={{ textAlign: 'center', marginTop: '2.5rem' }}>
-            <Button href="/services" variant="secondary" size="md">
-              View All Services
-              <svg className="arrow-right" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="16" height="16">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
-              </svg>
-            </Button>
           </div>
         </div>
       </section>
 
-      {/* TECHNOLOGY & CAPABILITIES */}
+      {/* ================================================================
+          SERVICES — Editorial left-aligned heading + icon cards
+          ================================================================ */}
+      <section className="section">
+        <div className="container">
+          {/* Editorial split heading */}
+          <div className="services-editorial-header">
+            <div className="services-editorial-left">
+              <div className="badge">
+                <span className="badge-dot"></span>
+                Core Solutions
+              </div>
+              <h2 className="services-editorial-title">
+                Our<br /><span style={{ color: 'var(--brand-orange)' }}>Services</span>
+              </h2>
+            </div>
+            <div className="services-editorial-right">
+              <p className="services-editorial-desc">
+                Empowering businesses through innovative technology, custom engineering,
+                and reliable digital systems built for growth and scale.
+              </p>
+              <Link href="/services" className="services-editorial-link">
+                View All Services
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="16" height="16" aria-hidden="true">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+                </svg>
+              </Link>
+            </div>
+          </div>
+
+          {/* 4-column icon service grid */}
+          <div className="services-icon-grid">
+            <div className="service-icon-card">
+              <div className="service-icon-wrap" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" width="28" height="28">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                </svg>
+              </div>
+              <h3 className="service-icon-title">SaaS apps with AI</h3>
+              <p className="service-icon-desc">Automate business workflows integrating Advanced AI to predict future endeavors.</p>
+              <Link href="/services" className="service-icon-link">Explore →</Link>
+            </div>
+
+            <div className="service-icon-card">
+              <div className="service-icon-wrap" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" width="28" height="28">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/>
+                </svg>
+              </div>
+              <h3 className="service-icon-title">Design &amp; Development</h3>
+              <p className="service-icon-desc">Lightweight Web and Mobile Applications engineered for reliability and user adoption.</p>
+              <Link href="/services" className="service-icon-link">Explore →</Link>
+            </div>
+
+            <div className="service-icon-card">
+              <div className="service-icon-wrap" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" width="28" height="28">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 00-9.78 2.096A4.001 4.001 0 003 15z"/>
+                </svg>
+              </div>
+              <h3 className="service-icon-title">Cloud Bookkeeping</h3>
+              <p className="service-icon-desc">Centralized financial data systems that streamline operations, auditing, and corporate accounting.</p>
+              <Link href="/services" className="service-icon-link">Explore →</Link>
+            </div>
+
+            <div className="service-icon-card">
+              <div className="service-icon-wrap" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" width="28" height="28">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"/>
+                </svg>
+              </div>
+              <h3 className="service-icon-title">Internet of Things</h3>
+              <p className="service-icon-desc">Hardware and software integration with IoT telemetry for connected business systems.</p>
+              <Link href="/services" className="service-icon-link">Explore →</Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ================================================================
+          TECHNOLOGY & CAPABILITIES
+          ================================================================ */}
       <section className="section" style={{ backgroundColor: 'var(--bg-subtle)' }}>
         <div className="container">
-          <div className="grid-2" style={{ alignItems: 'center', gap: '3rem' }}>
+          <div className="grid-2" style={{ alignItems: 'center', gap: '3.5rem' }}>
             <div>
               <div className="badge">
                 <span className="badge-dot"></span>
                 Digital Transformation
               </div>
-              <h2 className="section-title">Innovative Technology</h2>
-              <p style={{ color: 'var(--text-secondary)', marginBottom: '1.25rem', fontSize: '1rem', lineHeight: '1.6' }}>
-                Smartline Systems combines tech expertise and business intelligence to catalyze change and deliver results. As a Tech-Startup Enterprise, we concentrate on Web Application Development, Mobile Application Development, Design Services, Search Engine Optimization, and Enterprise Resource Planning Softwares.
+              <h2 className="section-title" style={{ marginBottom: '1.15rem' }}>Innovative Technology</h2>
+              <p style={{ color: 'var(--text-secondary)', marginBottom: '1.5rem', fontSize: '1.0625rem', lineHeight: '1.7' }}>
+                Smartline Systems combines tech expertise and business intelligence to catalyze change and deliver results. We concentrate on Web Application Development, Mobile Engineering, Design Services, SEO, and Enterprise Resource Planning.
               </p>
-              <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap' }}>
+              <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
                 <span className="tag-item">Web Applications</span>
                 <span className="tag-item">Mobile Engineering</span>
                 <span className="tag-item">Cloud Computing</span>
@@ -171,86 +222,65 @@ export default function HomePage() {
             </div>
 
             <div style={{ background: 'var(--bg-surface)', padding: '2rem', borderRadius: 'var(--radius-md)', border: '1px solid var(--border-card)' }}>
-              <h3 style={{ marginBottom: '1.25rem', fontSize: '1.15rem' }}>Technical Expertise Focus</h3>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-                <div>
-                  <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '0.35rem', fontSize: '0.875rem', fontWeight: 600 }}>
-                    <span>Web Development</span>
-                    <span style={{ color: 'var(--brand-orange)' }}>95%</span>
+              <h3 style={{ marginBottom: '1.5rem', fontSize: '1.1rem' }}>Technical Expertise Focus</h3>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '1.15rem' }}>
+                {[
+                  { label: 'Web Development', pct: 95 },
+                  { label: 'Cloud Computing', pct: 90 },
+                  { label: 'Mobile App Development', pct: 88 },
+                  { label: 'Artificial Intelligence', pct: 85 },
+                  { label: 'Data Analytics', pct: 82 },
+                ].map(({ label, pct }) => (
+                  <div key={label}>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '0.4rem', fontSize: '0.875rem', fontWeight: 600 }}>
+                      <span>{label}</span>
+                      <span style={{ color: 'var(--brand-orange)' }}>{pct}%</span>
+                    </div>
+                    <div style={{ height: 6, background: 'var(--border-light)', borderRadius: 3, overflow: 'hidden' }} role="progressbar" aria-valuenow={pct} aria-valuemin={0} aria-valuemax={100} aria-label={`${label} proficiency`}>
+                      <div style={{ width: `${pct}%`, height: '100%', background: 'var(--brand-orange)' }}></div>
+                    </div>
                   </div>
-                  <div style={{ height: 6, background: 'var(--border-light)', borderRadius: 3, overflow: 'hidden' }} role="progressbar" aria-valuenow={95} aria-valuemin={0} aria-valuemax={100} aria-label="Web Development proficiency">
-                    <div style={{ width: '95%', height: '100%', background: 'var(--brand-orange)' }}></div>
-                  </div>
-                </div>
-
-                <div>
-                  <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '0.35rem', fontSize: '0.875rem', fontWeight: 600 }}>
-                    <span>Cloud Computing</span>
-                    <span style={{ color: 'var(--brand-orange)' }}>90%</span>
-                  </div>
-                  <div style={{ height: 6, background: 'var(--border-light)', borderRadius: 3, overflow: 'hidden' }} role="progressbar" aria-valuenow={90} aria-valuemin={0} aria-valuemax={100} aria-label="Cloud Computing proficiency">
-                    <div style={{ width: '90%', height: '100%', background: 'var(--brand-orange)' }}></div>
-                  </div>
-                </div>
-
-                <div>
-                  <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '0.35rem', fontSize: '0.875rem', fontWeight: 600 }}>
-                    <span>Mobile App Development</span>
-                    <span style={{ color: 'var(--brand-orange)' }}>88%</span>
-                  </div>
-                  <div style={{ height: 6, background: 'var(--border-light)', borderRadius: 3, overflow: 'hidden' }} role="progressbar" aria-valuenow={88} aria-valuemin={0} aria-valuemax={100} aria-label="Mobile App Development proficiency">
-                    <div style={{ width: '88%', height: '100%', background: 'var(--brand-orange)' }}></div>
-                  </div>
-                </div>
-
-                <div>
-                  <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '0.35rem', fontSize: '0.875rem', fontWeight: 600 }}>
-                    <span>Artificial Intelligence</span>
-                    <span style={{ color: 'var(--brand-orange)' }}>85%</span>
-                  </div>
-                  <div style={{ height: 6, background: 'var(--border-light)', borderRadius: 3, overflow: 'hidden' }} role="progressbar" aria-valuenow={85} aria-valuemin={0} aria-valuemax={100} aria-label="Artificial Intelligence proficiency">
-                    <div style={{ width: '85%', height: '100%', background: 'var(--brand-orange)' }}></div>
-                  </div>
-                </div>
-
-                <div>
-                  <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '0.35rem', fontSize: '0.875rem', fontWeight: 600 }}>
-                    <span>Data Analytics</span>
-                    <span style={{ color: 'var(--brand-orange)' }}>82%</span>
-                  </div>
-                  <div style={{ height: 6, background: 'var(--border-light)', borderRadius: 3, overflow: 'hidden' }} role="progressbar" aria-valuenow={82} aria-valuemin={0} aria-valuemax={100} aria-label="Data Analytics proficiency">
-                    <div style={{ width: '82%', height: '100%', background: 'var(--brand-orange)' }}></div>
-                  </div>
-                </div>
+                ))}
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* ABOUT COMPANY PREVIEW */}
+      {/* ================================================================
+          ABOUT COMPANY — Left-aligned editorial split
+          ================================================================ */}
       <section className="section">
         <div className="container">
-          <div style={{ maxWidth: '800px', margin: '0 auto', textAlign: 'center' }}>
-            <div className="badge">
-              <span className="badge-dot"></span>
-              About SmartLine Systems
+          <div className="about-editorial-grid">
+            <div className="about-editorial-left">
+              <div className="badge">
+                <span className="badge-dot"></span>
+                About SmartLine Systems
+              </div>
+              <h2 style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', lineHeight: 1.15, marginBottom: '1.25rem' }}>
+                At the Forefront of<br />
+                <span style={{ color: 'var(--brand-orange)' }}>Cloud &amp; AI</span>
+              </h2>
             </div>
-            <h2 className="section-title">At the Forefront of Cloud &amp; AI</h2>
-            <p style={{ color: 'var(--text-secondary)', fontSize: '1.05rem', lineHeight: '1.65', marginBottom: '1.75rem' }}>
-              Smartline Systems Pvt. Ltd. is an innovative tech startup at the forefront of Cloud Computing and Artificial Intelligence (AI), dedicated to delivering cutting-edge solutions that empower businesses to achieve unparalleled success in today’s competitive landscape. Founded by a team of passionate tech enthusiasts, the company initially focused on product development and quickly evolved into a dynamic force in the tech industry.
-            </p>
-            <Button href="/about" variant="secondary" size="md">
-              Learn More
-              <svg className="arrow-right" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="16" height="16">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
-              </svg>
-            </Button>
+            <div className="about-editorial-right">
+              <p style={{ color: 'var(--text-secondary)', fontSize: '1.0625rem', lineHeight: '1.7', marginBottom: '1.75rem' }}>
+                Smartline Systems Pvt. Ltd. is an innovative tech startup dedicated to delivering cutting-edge Cloud Computing and Artificial Intelligence solutions that empower businesses to achieve unparalleled success in today&apos;s competitive landscape.
+              </p>
+              <Button href="/about" variant="secondary" size="md">
+                Learn More About Us
+                <svg className="arrow-right" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="16" height="16">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+                </svg>
+              </Button>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* PACKAGES PREVIEW */}
+      {/* ================================================================
+          PACKAGES PREVIEW
+          ================================================================ */}
       <section className="section" style={{ backgroundColor: 'var(--bg-subtle)' }}>
         <div className="container">
           <SectionHeading
@@ -317,7 +347,7 @@ export default function HomePage() {
 
           <div style={{ textAlign: 'center', marginTop: '2.5rem' }}>
             <Button href="/packages" variant="secondary" size="md">
-              View Packages
+              View All Packages
               <svg className="arrow-right" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="16" height="16">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
               </svg>
@@ -326,24 +356,37 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* FINAL CTA */}
+      {/* ================================================================
+          FINAL CTA — Bold, confident close
+          ================================================================ */}
       <section className="section">
         <div className="container">
-          <div style={{ background: 'var(--bg-surface)', border: '1px solid var(--border-card)', borderRadius: 'var(--radius-md)', padding: '3rem 2rem', textAlign: 'center' }}>
-            <h2 style={{ fontSize: '1.85rem', marginBottom: '0.75rem' }}>Start Your Digital Transformation</h2>
-            <p style={{ color: 'var(--text-muted)', maxWidth: 540, margin: '0 auto 1.75rem auto', fontSize: '1rem', lineHeight: '1.5' }}>
-              Connect with our technology consulting team to discuss your business requirements and explore tailored solutions.
-            </p>
-            <div style={{ display: 'flex', justifyContent: 'center', gap: '0.85rem', flexWrap: 'wrap' }}>
-              <Button href="/contact" variant="primary" size="lg">
-                Get Started
-                <svg className="arrow-right" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="16" height="16">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
-                </svg>
-              </Button>
-              <Button href="/interns" variant="secondary" size="lg">
-                View Talent Directory
-              </Button>
+          <div className="cta-banner">
+            <div className="cta-banner-content">
+              <h2 className="cta-banner-title">
+                Start Your<br />
+                <span style={{ color: 'var(--brand-orange)' }}>Digital Transformation</span>
+              </h2>
+              <p className="cta-banner-desc">
+                Connect with our technology consulting team to discuss your requirements
+                and explore tailored enterprise solutions.
+              </p>
+              <div className="cta-banner-actions">
+                <Button href="/contact" variant="primary" size="lg">
+                  Get Started
+                  <svg className="arrow-right" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="16" height="16">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+                  </svg>
+                </Button>
+                <Button href="/interns" variant="secondary" size="lg">
+                  View Talent Directory
+                </Button>
+              </div>
+            </div>
+            <div className="cta-banner-decoration" aria-hidden="true">
+              <div className="cta-deco-ring cta-deco-ring--1"></div>
+              <div className="cta-deco-ring cta-deco-ring--2"></div>
+              <div className="cta-deco-ring cta-deco-ring--3"></div>
             </div>
           </div>
         </div>
