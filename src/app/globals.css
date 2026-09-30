@@ -5,9 +5,13 @@
    Authority: UI/UX Pro Max Enterprise Design System
    =================================================================== */
 
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
 
 :root {
+  /* Typography System */
+  --font-display: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
   /* Brand Color Palette */
   --brand-orange: #E85D04;          /* Professional Orange */
   --brand-orange-hover: #C94D03;    /* Deeper Orange */
@@ -76,7 +80,7 @@
 }
 
 html {
-  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-family: var(--font-body);
   font-size: 16px;
   line-height: 1.6;
   color: var(--text-secondary);
@@ -106,10 +110,11 @@ main {
 
 /* Typography Hierarchy */
 h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
   color: var(--text-primary);
   font-weight: 700;
-  line-height: 1.25;
-  letter-spacing: -0.015em;
+  line-height: 1.2;
+  letter-spacing: -0.025em;
 }
 
 h1 { font-size: clamp(1.75rem, 3.8vw, 2.75rem); font-weight: 700; }
