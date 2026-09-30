@@ -1,16 +1,18 @@
 /* ===================================================================
-   SMARTLINE SYSTEMS - GLOBAL DESIGN SYSTEM
-   Professional Enterprise & Technology Solutions Theme
-   Base: Pure White & Crisp Light Neutrals | Accent: Mature Corporate Orange
-   Authority: UI/UX Pro Max Enterprise Design System
+   FONT PAIRING:
+   Bricolage Grotesque — Display authority: h1, h2, hero title, section headings,
+                          metric numbers, pricing amounts, calc totals, brand logo
+   DM Sans            — Clean UI precision: body, h3–h6, nav, buttons, badges,
+                          tags, form labels, form inputs, card content, footer
    =================================================================== */
-
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap');
 
 :root {
-  /* Typography System */
-  --font-display: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  --font-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  /* ---------------------------------------------------------------
+     Typography Tokens — used everywhere; never hardcode font names
+  --------------------------------------------------------------- */
+  --font-display: 'Bricolage Grotesque', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-body:    'DM Sans',             -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 
   /* Brand Color Palette */
   --brand-orange: #E85D04;          /* Professional Orange */
@@ -108,17 +110,33 @@ main {
   flex: 1 0 auto;
 }
 
-/* Typography Hierarchy */
-h1, h2, h3, h4, h5, h6 {
+/* ===================================================================
+   TYPOGRAPHY HIERARCHY — SURGICAL FONT ASSIGNMENT
+   h1, h2          → Bricolage Grotesque (display authority)
+   h3, h4, h5, h6  → DM Sans (functional sub-headings)
+   body, p, UI     → DM Sans (clean legibility)
+   =================================================================== */
+
+/* Display headings — Bricolage Grotesque for authority */
+h1, h2 {
   font-family: var(--font-display);
   color: var(--text-primary);
-  font-weight: 700;
-  line-height: 1.2;
-  letter-spacing: -0.025em;
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.03em;
 }
 
-h1 { font-size: clamp(1.75rem, 3.8vw, 2.75rem); font-weight: 700; }
-h2 { font-size: clamp(1.35rem, 2.8vw, 2.15rem); font-weight: 700; }
+/* Functional sub-headings — DM Sans for clean readability */
+h3, h4, h5, h6 {
+  font-family: var(--font-body);
+  color: var(--text-primary);
+  font-weight: 700;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+}
+
+h1 { font-size: clamp(1.85rem, 3.8vw, 2.85rem); font-weight: 800; }
+h2 { font-size: clamp(1.4rem, 2.8vw, 2.2rem);   font-weight: 700; }
 h3 { font-size: 1.25rem; font-weight: 600; }
 h4 { font-size: 1.05rem; font-weight: 600; }
 
@@ -188,7 +206,9 @@ a:hover {
   margin-left: 0;
 }
 
+/* Badge: DM Sans — concise UI label, punchy at small size */
 .badge {
+  font-family: var(--font-body);
   display: inline-flex;
   align-items: center;
   gap: 0.45rem;
@@ -199,7 +219,8 @@ a:hover {
   border-radius: var(--radius-xs);
   font-size: 0.75rem;
   font-weight: 600;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
   margin-bottom: 0.85rem;
 }
 
@@ -283,10 +304,12 @@ a:hover {
   line-height: 1.15;
 }
 
+/* Brand logo: Bricolage for the wordmark identity, DM Sans for tagline */
 .brand-text .title {
-  font-weight: 700;
+  font-family: var(--font-display);
+  font-weight: 800;
   font-size: 1.15rem;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.03em;
   color: var(--text-primary);
 }
 
@@ -295,10 +318,11 @@ a:hover {
 }
 
 .brand-text .tagline {
+  font-family: var(--font-body);
   font-size: 0.6875rem;
   text-transform: uppercase;
   color: var(--text-muted);
-  letter-spacing: 0.04em;
+  letter-spacing: 0.06em;
   font-weight: 600;
 }
 
@@ -308,7 +332,9 @@ a:hover {
   gap: 0.25rem;
 }
 
+/* Nav links: DM Sans — functional, clean, fast to scan */
 .nav-link {
+  font-family: var(--font-body);
   color: var(--text-secondary);
   font-size: 0.9375rem;
   font-weight: 500;
@@ -388,7 +414,9 @@ a:hover {
    BUTTON SYSTEM
    =================================================================== */
 
+/* Buttons: DM Sans — action-oriented, clean, legible at all sizes */
 .btn {
+  font-family: var(--font-body);
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -397,6 +425,7 @@ a:hover {
   min-height: 44px;
   font-weight: 600;
   font-size: 0.9375rem;
+  letter-spacing: 0.005em;
   border-radius: var(--radius-sm);
   border: 1px solid transparent;
   cursor: pointer;
@@ -546,13 +575,16 @@ a:hover {
   margin: 0.75rem 0 1.25rem 0;
 }
 
+/* Tags: DM Sans — tiny pills, maximum legibility at 0.75rem */
 .tag-item {
+  font-family: var(--font-body);
   background: var(--bg-muted);
   color: var(--text-secondary);
   padding: 0.2rem 0.55rem;
   border-radius: var(--radius-xs);
   font-size: 0.75rem;
   font-weight: 500;
+  letter-spacing: 0.01em;
 }
 
 /* ===================================================================
@@ -611,11 +643,13 @@ a:hover {
   max-width: 630px;
 }
 
+/* Hero title: Bricolage Grotesque — maximum display authority, visual centrepiece */
 .hero-title {
-  font-size: clamp(2.35rem, 4.2vw, 3.4rem);
+  font-family: var(--font-display);
+  font-size: clamp(2.65rem, 4.8vw, 3.85rem);
   font-weight: 800;
-  line-height: 1.15;
-  letter-spacing: -0.025em;
+  line-height: 1.1;
+  letter-spacing: -0.04em;
   color: var(--text-primary);
   margin-bottom: 1.25rem;
 }
@@ -625,9 +659,11 @@ a:hover {
   display: inline;
 }
 
+/* Hero lead: DM Sans — supporting body, warm and readable */
 .hero-lead {
+  font-family: var(--font-body);
   font-size: 1.125rem;
-  line-height: 1.68;
+  line-height: 1.7;
   color: var(--text-secondary);
   margin-bottom: 2rem;
   max-width: 540px;
@@ -649,7 +685,9 @@ a:hover {
   border-top: 1px solid var(--border-light);
 }
 
+/* Hero highlights: DM Sans — small verification list items */
 .hero-highlight-item {
+  font-family: var(--font-body);
   display: flex;
   align-items: center;
   gap: 0.5rem;
@@ -669,7 +707,9 @@ a:hover {
   margin-bottom: 1rem;
 }
 
+/* Floating pill: DM Sans — contextual status label */
 .hero-floating-pill {
+  font-family: var(--font-body);
   display: inline-flex;
   align-items: center;
   gap: 0.55rem;
@@ -712,19 +752,23 @@ a:hover {
   border-left: 3px solid var(--brand-orange);
 }
 
+/* Metrics: Bricolage Grotesque — big numbers deserve display authority */
 .metric-value {
-  font-size: 2rem;
-  font-weight: 700;
+  font-family: var(--font-display);
+  font-size: 2.15rem;
+  font-weight: 800;
   color: var(--text-primary);
-  line-height: 1.1;
-  letter-spacing: -0.015em;
+  line-height: 1.05;
+  letter-spacing: -0.04em;
 }
 
 .metric-value span {
   color: var(--brand-orange);
 }
 
+/* Metric labels: DM Sans — small supporting descriptor */
 .metric-label {
+  font-family: var(--font-body);
   font-size: 0.875rem;
   color: var(--text-muted);
   font-weight: 500;
@@ -776,10 +820,13 @@ a:hover {
   margin-bottom: 0.75rem;
 }
 
+/* Pricing name: DM Sans — product name label */
 .pricing-name {
-  font-size: 1.2rem;
+  font-family: var(--font-body);
+  font-size: 1.1rem;
   font-weight: 700;
   margin-bottom: 0.35rem;
+  letter-spacing: -0.01em;
 }
 
 .pricing-price {
@@ -789,20 +836,28 @@ a:hover {
   gap: 0.3rem;
 }
 
+/* Currency symbol: Bricolage — part of the pricing display */
 .pricing-price .currency {
+  font-family: var(--font-display);
   font-size: 1.25rem;
   font-weight: 700;
   color: var(--brand-orange);
 }
 
+/* Amount: Bricolage — big number, full display authority, tabular numeral alignment */
 .pricing-price .amount {
-  font-size: 2.25rem;
-  font-weight: 700;
+  font-family: var(--font-display);
+  font-size: 2.35rem;
+  font-weight: 800;
   color: var(--text-primary);
   line-height: 1;
+  letter-spacing: -0.04em;
+  font-variant-numeric: tabular-nums;
 }
 
+/* Pricing term and features: DM Sans — descriptive UI text */
 .pricing-term {
+  font-family: var(--font-body);
   font-size: 0.8125rem;
   color: var(--text-muted);
   font-weight: 500;
@@ -820,6 +875,7 @@ a:hover {
 }
 
 .pricing-feature-item {
+  font-family: var(--font-body);
   display: flex;
   align-items: flex-start;
   gap: 0.6rem;
@@ -1033,10 +1089,13 @@ a:hover {
   gap: 0.4rem;
 }
 
+/* Form labels + inputs: DM Sans — clean, functional, maximum legibility */
 .form-label {
+  font-family: var(--font-body);
   font-size: 0.875rem;
   font-weight: 600;
   color: var(--text-primary);
+  letter-spacing: 0.005em;
 }
 
 .form-label span.req {
@@ -1044,6 +1103,7 @@ a:hover {
 }
 
 .form-control {
+  font-family: var(--font-body);
   width: 100%;
   padding: 0.75rem 1rem;
   background: var(--bg-surface);
@@ -1170,19 +1230,25 @@ textarea.form-control {
   text-align: center;
 }
 
+/* Calc label: DM Sans — small uppercase descriptor */
 .calc-total-label {
+  font-family: var(--font-body);
   font-size: 0.75rem;
   text-transform: uppercase;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.06em;
   color: var(--text-muted);
   font-weight: 600;
 }
 
+/* Calc total: Bricolage — the big number result, display authority + tabular nums */
 .calc-total-amount {
-  font-size: 2.25rem;
-  font-weight: 700;
+  font-family: var(--font-display);
+  font-size: 2.35rem;
+  font-weight: 800;
   color: var(--brand-orange);
   margin-top: 0.25rem;
+  letter-spacing: -0.04em;
+  font-variant-numeric: tabular-nums;
 }
 
 /* ===================================================================
@@ -1255,13 +1321,15 @@ textarea.form-control {
   margin-bottom: 2.5rem;
 }
 
+/* Footer: DM Sans throughout — informational, modest, legible */
 .footer-col-title {
-  font-size: 0.8125rem;
+  font-family: var(--font-body);
+  font-size: 0.75rem;
   font-weight: 700;
   color: var(--text-primary);
   margin-bottom: 1rem;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.08em;
 }
 
 .footer-links {
@@ -1271,6 +1339,7 @@ textarea.form-control {
 }
 
 .footer-link {
+  font-family: var(--font-body);
   color: var(--text-muted);
   font-size: 0.9rem;
   transition: color var(--transition-fast);
