@@ -599,12 +599,11 @@ a:hover {
   display: flex;
   align-items: center;
   padding: 6rem 0 5.5rem 0;
-  /* Solid white: blocks body grid from bleeding through image mask */
+  /* Solid white blocks body grid from bleeding through image mask */
   background-color: var(--bg-page);
   overflow: hidden;
   isolation: isolate;
-  /* Clear bottom edge: prevents image from visually bleeding into next section */
-  border-bottom: 1px solid var(--border-light);
+  /* No border-bottom here — stats strip connects naturally via grid continuity */
 }
 
 /* Grid lives ONLY on the left text half — never touches the image */
@@ -762,38 +761,17 @@ a:hover {
    STATS STRIP — Premium horizontal credential bar
    =================================================================== */
 
+/* ===================================================================
+   STATS STRIP — Transparent: body grid flows through continuously
+   =================================================================== */
+
 .stats-strip {
-  background-color: var(--bg-page);
-  border-bottom: 1px solid var(--border-light);
+  /* Transparent: lets the global grid lines show through naturally */
+  background: transparent;
+  border: none;
   padding: 0;
   position: relative;
   z-index: 2;
-}
-
-/* Soft white fade from hero into the strip — top edge */
-.stats-strip::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 28px;
-  background: linear-gradient(to bottom, var(--bg-page), transparent);
-  pointer-events: none;
-  z-index: 3;
-}
-
-/* Soft white fade from strip into next section — bottom edge */
-.stats-strip::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 28px;
-  background: linear-gradient(to top, var(--bg-page), transparent);
-  pointer-events: none;
-  z-index: 3;
 }
 
 .stats-grid {
@@ -808,7 +786,10 @@ a:hover {
   gap: 1.25rem;
   padding: 2rem 2rem;
   border-right: 1px solid var(--border-light);
-  background: var(--bg-page);
+  border-top: 1px solid var(--border-light);
+  border-bottom: 1px solid var(--border-light);
+  /* Transparent: grid shows through card gaps and below */
+  background: transparent;
   transition: background-color var(--transition-fast);
   position: relative;
 }
@@ -821,7 +802,7 @@ a:hover {
   background: var(--brand-orange-light);
 }
 
-/* Orange left accent border on hover */
+/* Orange left accent on hover */
 .stat-card::before {
   content: '';
   position: absolute;
@@ -839,7 +820,7 @@ a:hover {
   opacity: 1;
 }
 
-/* Left: icon circle */
+/* Icon circle */
 .stat-icon-circle {
   width: 48px;
   height: 48px;
@@ -860,7 +841,7 @@ a:hover {
   border-color: var(--brand-orange);
 }
 
-/* Right: number + label */
+/* Text block */
 .stat-text {
   display: flex;
   flex-direction: column;
@@ -891,15 +872,12 @@ a:hover {
   line-height: 1.4;
 }
 
-/* Remove old dark card variant — replaced by unified design */
-.stat-card--dark {
-  background: var(--bg-page);
-}
-
+/* Unused dark variant — kept for backward compat */
+.stat-card--dark { background: transparent; }
 .stat-card--dark .stat-value { color: var(--text-primary); }
 .stat-card--dark .stat-value span { color: var(--brand-orange); }
 .stat-card--dark .stat-label { color: var(--text-muted); }
-.stat-icon { color: var(--brand-orange); margin-bottom: 0; }
+.stat-icon { color: var(--brand-orange); }
 
 
 /* ===================================================================
