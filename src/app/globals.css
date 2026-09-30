@@ -595,15 +595,13 @@ a:hover {
 
 .hero-section {
   position: relative;
-  min-height: 640px;
+  min-height: 560px;
   display: flex;
   align-items: center;
-  padding: 6rem 0 5.5rem 0;
-  /* Solid white blocks body grid from bleeding through image mask */
+  padding: 5rem 0 3rem 0;
   background-color: var(--bg-page);
   overflow: hidden;
   isolation: isolate;
-  /* No border-bottom here — stats strip connects naturally via grid continuity */
 }
 
 /* Grid lives ONLY on the left text half — never touches the image */
@@ -762,13 +760,13 @@ a:hover {
    =================================================================== */
 
 /* ===================================================================
-   STATS STRIP — Transparent: body grid flows through continuously
+   STATS STRIP — Warm credential band, clearly defined
    =================================================================== */
 
 .stats-strip {
-  /* Transparent: lets the global grid lines show through naturally */
-  background: transparent;
-  border: none;
+  background-color: var(--bg-subtle);  /* warm off-white band — creates visual rhythm */
+  border-top: 1px solid var(--border-light);
+  border-bottom: 1px solid var(--border-light);
   padding: 0;
   position: relative;
   z-index: 2;
@@ -784,13 +782,11 @@ a:hover {
   flex-direction: row;
   align-items: center;
   gap: 1.25rem;
-  padding: 2rem 2rem;
+  padding: 2.25rem 2rem;
   border-right: 1px solid var(--border-light);
-  border-top: 1px solid var(--border-light);
-  border-bottom: 1px solid var(--border-light);
-  /* Transparent: grid shows through card gaps and below */
-  background: transparent;
-  transition: background-color var(--transition-fast);
+  /* White card surface against warm strip background — creates depth */
+  background: var(--bg-surface);
+  transition: background-color var(--transition-fast), box-shadow var(--transition-fast);
   position: relative;
 }
 
@@ -800,24 +796,12 @@ a:hover {
 
 .stat-card:hover {
   background: var(--brand-orange-light);
+  box-shadow: inset 0 -3px 0 0 var(--brand-orange);
 }
 
-/* Orange left accent on hover */
+/* Orange bottom accent on hover instead of left border — more natural */
 .stat-card::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 20%;
-  bottom: 20%;
-  width: 3px;
-  background: var(--brand-orange);
-  border-radius: 0 2px 2px 0;
-  opacity: 0;
-  transition: opacity var(--transition-fast);
-}
-
-.stat-card:hover::before {
-  opacity: 1;
+  display: none;
 }
 
 /* Icon circle */
@@ -826,7 +810,7 @@ a:hover {
   height: 48px;
   border-radius: 50%;
   background: var(--brand-orange-light);
-  border: 1px solid var(--brand-orange-border);
+  border: 1.5px solid var(--brand-orange-border);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -845,12 +829,12 @@ a:hover {
 .stat-text {
   display: flex;
   flex-direction: column;
-  gap: 0.2rem;
+  gap: 0.15rem;
 }
 
 .stat-value {
   font-family: var(--font-display);
-  font-size: 1.85rem;
+  font-size: 2rem;
   font-weight: 800;
   color: var(--text-primary);
   line-height: 1;
@@ -860,7 +844,7 @@ a:hover {
 
 .stat-value span {
   color: var(--brand-orange);
-  font-size: 1.25rem;
+  font-size: 1.35rem;
   font-weight: 700;
 }
 
@@ -872,8 +856,8 @@ a:hover {
   line-height: 1.4;
 }
 
-/* Unused dark variant — kept for backward compat */
-.stat-card--dark { background: transparent; }
+/* Backward compat */
+.stat-card--dark { background: var(--bg-surface); }
 .stat-card--dark .stat-value { color: var(--text-primary); }
 .stat-card--dark .stat-value span { color: var(--brand-orange); }
 .stat-card--dark .stat-label { color: var(--text-muted); }
