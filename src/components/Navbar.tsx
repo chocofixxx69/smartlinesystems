@@ -143,12 +143,15 @@ export default function Navbar() {
             </Link>
           );
         })}
-        <div style={{ marginTop: '0.75rem', paddingTop: '0.75rem', borderTop: '1px solid var(--border-light)' }}>
-          <Button href="/contact" variant="primary" style={{ width: '100%' }} onClick={() => setIsOpen(false)}>
+        <div style={{ marginTop: '0.75rem', paddingTop: '0.75rem', borderTop: '1px solid var(--border-light)', display: 'flex', flexDirection: 'column', gap: '0.6rem' }}>
+          <Button href="/contact" variant="primary" style={{ width: '100%', justifyContent: 'center' }} onClick={() => setIsOpen(false)}>
             Get Started
             <svg className="arrow-right" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="16" height="16" aria-hidden="true">
               <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
             </svg>
+          </Button>
+          <Button href="/contact" variant="secondary" style={{ width: '100%', justifyContent: 'center' }} onClick={() => setIsOpen(false)}>
+            Book Consultation
           </Button>
         </div>
       </nav>

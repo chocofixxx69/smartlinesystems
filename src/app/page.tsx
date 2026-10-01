@@ -206,7 +206,7 @@ export default function HomePage() {
           ================================================================ */}
       <section className="section" style={{ backgroundColor: 'var(--bg-subtle)' }}>
         <div className="container">
-          <div className="grid-2" style={{ alignItems: 'center', gap: '3.5rem' }}>
+          <div className="tech-capabilities-grid">
             <div>
               <div className="badge">
                 <span className="badge-dot"></span>
@@ -226,7 +226,7 @@ export default function HomePage() {
               </div>
             </div>
 
-            <div style={{ background: 'var(--bg-surface)', padding: '2rem', borderRadius: 'var(--radius-md)', border: '1px solid var(--border-card)' }}>
+            <div className="technical-focus-card">
               <h3 style={{ marginBottom: '1.5rem', fontSize: '1.1rem' }}>Technical Expertise Focus</h3>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '1.15rem' }}>
                 {[
