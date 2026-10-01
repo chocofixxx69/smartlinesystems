@@ -2178,6 +2178,7 @@ textarea.form-control {
     padding: 1.25rem 0 0 0;
     position: relative;
     overflow: hidden;
+    background: #FAF7F2 !important;
   }
   .hero-container {
     display: flex;
@@ -2202,14 +2203,22 @@ textarea.form-control {
     display: inline !important;
   }
 
-  /* Full-Bleed Mobile Hero Visual & Feature Strip (Matching Reference Image 2 & 3) */
+  /* Hide ambient decorative orbs and swoops on mobile so background is pure, uniform cream */
+  .hero-corner-swoop,
+  .hero-ambient-orb-top-right,
+  .hero-ambient-orb-mid-left,
+  .hero-ambient-orb-bottom-right {
+    display: none !important;
+  }
+
+  /* Full-Bleed Mobile Hero Visual & Feature Strip (Matching Reference Mockup) */
   .hero-mobile-visual {
     display: flex;
     flex-direction: column;
     width: calc(100% + 3rem);
     margin-left: -1.5rem;
     margin-right: -1.5rem;
-    margin-top: -5.25rem;
+    margin-top: -1.25rem;
     position: relative;
     z-index: 2;
   }
@@ -2222,8 +2231,8 @@ textarea.form-control {
     border: none !important;
     margin: 0 !important;
     padding: 0 !important;
-    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.5) 20px, #000 45px, #000 100%);
-    mask-image: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.5) 20px, #000 45px, #000 100%);
+    -webkit-mask-image: none !important;
+    mask-image: none !important;
   }
   .hero-mobile-img {
     width: 100%;
@@ -2239,7 +2248,7 @@ textarea.form-control {
     padding: 0.85rem 1.5rem 1.25rem 1.5rem;
     margin-top: 0;
     border-top: none !important;
-    background: transparent;
+    background: #FAF7F2 !important;
   }
   .feature-trio-item {
     display: flex;
@@ -2252,14 +2261,14 @@ textarea.form-control {
     width: 44px;
     height: 44px;
     border-radius: 14px;
-    background: #FFF3EA;
-    border: 1px solid rgba(232, 93, 4, 0.14);
+    background: #FFF5EE;
+    border: 1px solid rgba(232, 93, 4, 0.12);
     display: flex;
     align-items: center;
     justify-content: center;
     color: var(--brand-orange);
     margin-bottom: 0.2rem;
-    box-shadow: 0 2px 6px rgba(232, 93, 4, 0.05);
+    box-shadow: 0 2px 6px rgba(232, 93, 4, 0.04);
   }
   .feature-trio-title {
     font-family: var(--font-body);
@@ -2404,7 +2413,7 @@ textarea.form-control {
     width: calc(100% + 2.5rem);
     margin-left: -1.25rem;
     margin-right: -1.25rem;
-    margin-top: -5rem;
+    margin-top: -1.25rem;
   }
   .hero-feature-trio {
     padding: 0.85rem 1rem 1.25rem 1rem;
@@ -2547,7 +2556,7 @@ textarea.form-control {
     width: calc(100% + 2rem);
     margin-left: -1rem;
     margin-right: -1rem;
-    margin-top: -4.5rem;
+    margin-top: -1.25rem;
   }
   .hero-feature-trio {
     padding: 0.75rem 0.5rem 1.15rem 0.5rem;
