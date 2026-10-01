@@ -1,18 +1,17 @@
 /* ===================================================================
-   FONT PAIRING:
-   Bricolage Grotesque — Display authority: h1, h2, hero title, section headings,
-                          metric numbers, pricing amounts, calc totals, brand logo
-   DM Sans            — Clean UI precision: body, h3–h6, nav, buttons, badges,
-                          tags, form labels, form inputs, card content, footer
+   TYPOGRAPHY:
+   Plus Jakarta Sans — Exact modern geometric SaaS typography from the reference image.
+   Applied across display titles, hero typography, UI components, navigation,
+   badges, metric numbers, and body text.
    =================================================================== */
-@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,600;1,700&display=swap');
 
 :root {
   /* ---------------------------------------------------------------
-     Typography Tokens — used everywhere; never hardcode font names
+     Typography Tokens — Plus Jakarta Sans
   --------------------------------------------------------------- */
-  --font-display: 'Bricolage Grotesque', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  --font-body:    'DM Sans',             -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-display: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-body:    'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 
   /* Brand Color Palette */
   --brand-orange: #E85D04;          /* Professional Orange */
@@ -22,10 +21,10 @@
   --brand-orange-border: #FCD5C0;   /* Subtle Orange Border */
 
   /* Neutral Backgrounds */
-  --bg-page: #FFFFFF;               /* Main Background (White) */
+  --bg-page: #FAF8F5;               /* Warm Champagne/Ivory Main Background */
   --bg-surface: #FFFFFF;            /* Cards & Panels (White) */
-  --bg-subtle: rgba(250, 249, 247, 0.85); /* Secondary Background (Warm Off-White, translucent for grid) */
-  --bg-muted: #F3F1EE;              /* Neutral Tag Background */
+  --bg-subtle: #FFFDF9;             /* Secondary Warm Ivory Background */
+  --bg-muted: #F5EFE8;              /* Soft Warm Tag Background */
 
   /* Global Technical Grid System Tokens */
   --grid-line: rgba(32, 33, 36, 0.045); /* Extremely subtle 1px blueprint line */
@@ -370,17 +369,45 @@ a:hover {
   padding: 0.45rem 0.85rem;
   border-radius: var(--radius-xs);
   transition: color var(--transition-fast), background-color var(--transition-fast);
+  position: relative;
 }
 
 .nav-link:hover {
-  color: var(--text-primary);
-  background-color: var(--bg-subtle);
+  color: var(--brand-orange);
+  background-color: transparent;
 }
 
 .nav-link.active {
   color: var(--brand-orange);
   font-weight: 600;
-  background-color: var(--brand-orange-light);
+  background-color: transparent;
+}
+
+.nav-link.active::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 22px;
+  height: 2.5px;
+  background-color: var(--brand-orange);
+  border-radius: var(--radius-full);
+}
+
+.nav-text-link {
+  font-family: var(--font-body);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  text-decoration: none;
+  padding: 0.45rem 0.75rem;
+  transition: color var(--transition-fast);
+  margin-right: 0.25rem;
+}
+
+.nav-text-link:hover {
+  color: var(--brand-orange);
 }
 
 .nav-actions {
@@ -518,6 +545,57 @@ a:hover {
   font-size: 1rem;
 }
 
+.btn-pill {
+  border-radius: var(--radius-full) !important;
+  padding: 0.75rem 1.75rem !important;
+  font-weight: 600;
+  box-shadow: 0 4px 14px -2px rgba(232, 93, 4, 0.35);
+  transition: all var(--transition-normal);
+}
+
+.btn-pill:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 20px -2px rgba(232, 93, 4, 0.45);
+}
+
+.btn-pill.btn-sm {
+  padding: 0.45rem 1.15rem !important;
+  font-size: 0.875rem !important;
+}
+
+.btn-pill-demo {
+  background-color: rgba(255, 255, 255, 0.95) !important;
+  border: 1.5px solid rgba(220, 224, 230, 0.9) !important;
+  color: var(--text-primary) !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04) !important;
+  gap: 0.65rem !important;
+}
+
+.btn-pill-demo:hover {
+  background-color: #FFFFFF !important;
+  border-color: rgba(232, 93, 4, 0.45) !important;
+  color: var(--brand-orange) !important;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06) !important;
+}
+
+.play-icon-bubble {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--brand-orange-light);
+  color: var(--brand-orange);
+  transition: transform var(--transition-fast), background-color var(--transition-fast), color var(--transition-fast);
+}
+
+.btn-pill-demo:hover .play-icon-bubble {
+  transform: scale(1.1);
+  background: var(--brand-orange);
+  color: #FFFFFF;
+}
+
 /* ===================================================================
    CARDS & GRIDS
    =================================================================== */
@@ -617,48 +695,57 @@ a:hover {
 }
 
 /* ===================================================================
-   HERO SECTION — Editorial full-bleed composition
-   Grid fix: body grid is blocked at section level.
-   A local grid pseudo-element is applied only to the LEFT text area.
+   HERO SECTION — Reference-inspired warm sunlit workspace
    =================================================================== */
 
 .hero-section {
   position: relative;
-  min-height: 560px;
+  min-height: calc(100vh - var(--header-height));
+  min-height: calc(100dvh - var(--header-height));
   display: flex;
   align-items: center;
-  padding: 5rem 0 3rem 0;
-  background-color: var(--bg-page);
+  padding: 3rem 0;
+  box-sizing: border-box;
+  background: linear-gradient(135deg, #FAF7F2 0%, #FFFDF9 50%, #FAF6F0 100%);
   overflow: hidden;
   isolation: isolate;
 }
 
-/* Grid lives ONLY on the left text half — never touches the image */
+/* Technical blueprint grid on left text area */
 .hero-section::before {
   content: '';
   position: absolute;
   inset: 0;
-  /* Grid confined to left 40% via mask — image side stays clean */
   background-image:
     linear-gradient(to right, var(--grid-line) 1px, transparent 1px),
     linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px);
   background-size: var(--grid-size) var(--grid-size);
-  /* Fade the grid OUT as it approaches the image zone */
-  -webkit-mask-image: linear-gradient(to right, #000 0%, #000 30%, rgba(0,0,0,0.3) 50%, transparent 65%);
-  mask-image: linear-gradient(to right, #000 0%, #000 30%, rgba(0,0,0,0.3) 50%, transparent 65%);
+  -webkit-mask-image: linear-gradient(to right, #000 0%, #000 35%, rgba(0,0,0,0.3) 50%, transparent 68%);
+  mask-image: linear-gradient(to right, #000 0%, #000 35%, rgba(0,0,0,0.3) 50%, transparent 68%);
   pointer-events: none;
-  z-index: 0;
+  z-index: 1;
 }
 
+/* Bottom-left warm orange crescent swoop inspired by reference */
+.hero-corner-swoop {
+  position: absolute;
+  bottom: -140px;
+  left: -140px;
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(232, 93, 4, 0.28) 0%, rgba(245, 120, 20, 0.12) 45%, transparent 72%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Background Workspace Studio Image — spans full viewport height to bottom edge */
 .hero-bg-container {
   position: absolute;
   inset: 0;
   pointer-events: none;
   overflow: hidden;
   z-index: 1;
-  /* Bottom fade so image dissolves into page below */
-  -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 60%, rgba(0, 0, 0, 0.25) 85%, transparent 100%);
-  mask-image: linear-gradient(to bottom, #000 0%, #000 60%, rgba(0, 0, 0, 0.25) 85%, transparent 100%);
 }
 
 .hero-bg-image {
@@ -667,42 +754,75 @@ a:hover {
   right: 0;
   width: 68%;
   height: 100%;
+  background-image: url('/assets/hero-reference-inspired.jpg');
   background-size: cover;
-  background-position: center right;
+  background-position: right bottom;
   background-repeat: no-repeat;
-  opacity: 0.97;
-  /* Tighter left-edge fade: image becomes fully opaque sooner — no grid bleed zone */
-  -webkit-mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,0.4) 15%, rgba(0,0,0,0.85) 28%, #000 38%);
-  mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,0.4) 15%, rgba(0,0,0,0.85) 28%, #000 38%);
+  opacity: 0.98;
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,0.02) 12%, rgba(0,0,0,0.45) 28%, rgba(0,0,0,0.92) 44%, #000 56%);
+  mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,0.02) 12%, rgba(0,0,0,0.45) 28%, rgba(0,0,0,0.92) 44%, #000 56%);
 }
 
-/* Not used — kept for backward compat */
-.hero-bg-fade {
-  display: none;
+.hero-bg-gradient-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to right, 
+    #FAF7F2 0%, 
+    #FAF7F2 35%, 
+    rgba(250, 247, 242, 0.94) 48%, 
+    rgba(250, 247, 242, 0.3) 66%, 
+    transparent 82%
+  );
+  pointer-events: none;
 }
 
 .hero-container {
   position: relative;
-  z-index: 2;
+  z-index: 3;
   display: flex;
-  justify-content: space-between;
   align-items: center;
   width: 100%;
 }
 
 .hero-content {
-  max-width: 630px;
+  max-width: 580px;
 }
 
-/* Hero title: Bricolage Grotesque — editorial display centrepiece */
+/* Badge Pill: DM Sans — refined reference-inspired label */
+.hero-badge-pill {
+  font-family: var(--font-body);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.35rem 0.95rem;
+  background-color: rgba(232, 93, 4, 0.08);
+  border: 1px solid rgba(232, 93, 4, 0.22);
+  border-radius: var(--radius-full);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: #2D3139;
+  letter-spacing: 0.01em;
+  margin-bottom: 1.25rem;
+  box-shadow: 0 1px 3px rgba(232, 93, 4, 0.04);
+}
+
+.hero-badge-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background-color: var(--brand-orange);
+  box-shadow: 0 0 0 3px rgba(232, 93, 4, 0.2);
+}
+
+/* Hero title: Bricolage Grotesque — punchy two-sentence rhythm */
 .hero-title {
   font-family: var(--font-display);
-  font-size: clamp(3rem, 5.5vw, 4.75rem);
+  font-size: clamp(2.75rem, 5vw, 4.35rem);
   font-weight: 800;
-  line-height: 1.05;
-  letter-spacing: -0.045em;
-  color: var(--text-primary);
-  margin-bottom: 1.35rem;
+  line-height: 1.08;
+  letter-spacing: -0.04em;
+  color: #141517;
+  margin-bottom: 1.25rem;
 }
 
 .hero-title .highlight-text {
@@ -713,94 +833,184 @@ a:hover {
 /* Hero lead: DM Sans — supporting body, warm and readable */
 .hero-lead {
   font-family: var(--font-body);
-  font-size: 1.125rem;
+  font-size: 1.0625rem;
   line-height: 1.7;
-  color: var(--text-secondary);
-  margin-bottom: 2rem;
-  max-width: 540px;
+  color: #555B64;
+  margin-bottom: 2.25rem;
+  max-width: 520px;
 }
 
 .hero-cta-group {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 0.85rem;
-  margin-bottom: 2.25rem;
+  gap: 1rem;
 }
 
-.hero-highlights-row {
+/* ===================================================================
+   FLOATING CAPABILITY CARDS (RIGHT COLUMN)
+   =================================================================== */
+
+.hero-floating-cards {
   display: flex;
-  flex-wrap: wrap;
-  gap: 1.5rem;
-  padding-top: 1.25rem;
-  border-top: 1px solid var(--border-light);
+  flex-direction: column;
+  gap: 1rem;
+  margin-left: auto;
+  max-width: 320px;
+  width: 100%;
 }
 
-/* Hero highlights: DM Sans — small verification list items */
-.hero-highlight-item {
-  font-family: var(--font-body);
+.hero-float-card {
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(254, 215, 170, 0.65);
+  border-radius: 16px;
+  padding: 0.95rem 1.15rem;
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  font-size: 0.875rem;
-  font-weight: 600;
-  color: var(--text-secondary);
+  gap: 0.95rem;
+  box-shadow: 0 10px 25px -4px rgba(32, 33, 36, 0.08), 0 4px 10px -2px rgba(232, 93, 4, 0.05);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+  cursor: default;
 }
 
-.hero-highlight-item svg {
+.hero-float-card:hover {
+  transform: translateY(-3px) translateX(2px);
+  box-shadow: 0 14px 30px -4px rgba(32, 33, 36, 0.12), 0 6px 14px -2px rgba(232, 93, 4, 0.1);
+  border-color: rgba(232, 93, 4, 0.45);
+}
+
+.float-card-icon {
+  width: 42px;
+  height: 42px;
+  border-radius: 11px;
+  background: rgba(232, 93, 4, 0.09);
+  border: 1px solid rgba(232, 93, 4, 0.18);
+  display: flex;
+  align-items: center;
+  justify-content: center;
   color: var(--brand-orange);
   flex-shrink: 0;
 }
 
-.hero-badge-floating {
+.float-card-text {
   display: flex;
-  align-self: flex-end;
-  margin-bottom: 1rem;
+  flex-direction: column;
+  gap: 0.15rem;
 }
 
-/* Floating pill: DM Sans — contextual status label */
-.hero-floating-pill {
+.float-card-title {
   font-family: var(--font-body);
-  display: inline-flex;
-  align-items: center;
-  gap: 0.55rem;
-  background: rgba(255, 255, 255, 0.92);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  border: 1px solid var(--border-card);
-  padding: 0.55rem 1.15rem;
-  border-radius: var(--radius-full);
-  font-size: 0.8125rem;
-  font-weight: 600;
-  color: var(--text-primary);
-  box-shadow: 0 4px 12px rgba(32, 33, 36, 0.08);
+  font-size: 0.8875rem;
+  font-weight: 700;
+  color: #16181B;
+  letter-spacing: -0.01em;
 }
 
-.live-pulse {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background-color: var(--color-success);
-  box-shadow: 0 0 0 3px rgba(35, 134, 54, 0.2);
+.float-card-desc {
+  font-family: var(--font-body);
+  font-size: 0.775rem;
+  color: #64748B;
+  line-height: 1.35;
 }
 
 /* ===================================================================
-   STATS STRIP — Premium horizontal credential bar
-   =================================================================== */
-
-/* ===================================================================
-   STATS STRIP — Warm credential band, clearly defined
+   STATS STRIP — 5-COLUMN HORIZONTAL CREDENTIAL BAND
    =================================================================== */
 
 .stats-strip {
-  background-color: var(--bg-subtle);  /* warm off-white band — creates visual rhythm */
-  border-top: 1px solid var(--border-light);
-  border-bottom: 1px solid var(--border-light);
-  padding: 0;
+  background-color: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-top: 1px solid rgba(231, 229, 226, 0.8);
+  border-bottom: 1px solid rgba(231, 229, 226, 0.8);
+  padding: 1.5rem 0;
   position: relative;
-  z-index: 2;
+  z-index: 4;
 }
 
+.stats-grid-5 {
+  display: grid;
+  grid-template-columns: repeat(4, auto) 1.25fr;
+  align-items: center;
+  gap: 2.25rem;
+}
+
+.stats-grid-5 .stat-card {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background: transparent;
+  border: none;
+  padding: 0;
+  box-shadow: none;
+}
+
+.stats-grid-5 .stat-icon-circle {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(232, 93, 4, 0.08);
+  border: 1px solid rgba(232, 93, 4, 0.18);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--brand-orange);
+  flex-shrink: 0;
+  transition: all var(--transition-fast);
+}
+
+.stats-grid-5 .stat-card:hover .stat-icon-circle {
+  background: var(--brand-orange);
+  color: #fff;
+  transform: scale(1.06);
+}
+
+.stats-grid-5 .stat-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.stats-grid-5 .stat-value {
+  font-family: var(--font-display);
+  font-size: 1.625rem;
+  font-weight: 800;
+  color: #141517;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+}
+
+.stats-grid-5 .stat-value span {
+  color: var(--brand-orange);
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-left: 1px;
+}
+
+.stats-grid-5 .stat-label {
+  font-family: var(--font-body);
+  font-size: 0.7875rem;
+  font-weight: 500;
+  color: #64748B;
+  white-space: nowrap;
+}
+
+.stats-narrative-col {
+  padding-left: 2rem;
+  border-left: 1px solid rgba(231, 229, 226, 0.9);
+}
+
+.stats-narrative-text {
+  font-family: var(--font-body);
+  font-size: 0.8125rem;
+  line-height: 1.55;
+  color: #64748B;
+  margin: 0;
+}
+
+/* Backward compatibility for 4-column stats grid */
 .stats-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -813,7 +1023,6 @@ a:hover {
   gap: 1.25rem;
   padding: 2.25rem 2rem;
   border-right: 1px solid var(--border-light);
-  /* White card surface against warm strip background — creates depth */
   background: var(--bg-surface);
   transition: background-color var(--transition-fast), box-shadow var(--transition-fast);
   position: relative;
@@ -828,12 +1037,6 @@ a:hover {
   box-shadow: inset 0 -3px 0 0 var(--brand-orange);
 }
 
-/* Orange bottom accent on hover instead of left border — more natural */
-.stat-card::before {
-  display: none;
-}
-
-/* Icon circle */
 .stat-icon-circle {
   width: 48px;
   height: 48px;
@@ -854,7 +1057,6 @@ a:hover {
   border-color: var(--brand-orange);
 }
 
-/* Text block */
 .stat-text {
   display: flex;
   flex-direction: column;
@@ -885,7 +1087,6 @@ a:hover {
   line-height: 1.4;
 }
 
-/* Backward compat */
 .stat-card--dark { background: var(--bg-surface); }
 .stat-card--dark .stat-value { color: var(--text-primary); }
 .stat-card--dark .stat-value span { color: var(--brand-orange); }
@@ -1782,19 +1983,22 @@ textarea.form-control {
 .about-editorial-right {}
 
 /* ===================================================================
-   CTA BANNER — Premium close section
+   CTA BANNER — Executive Enterprise Consultation Card
    =================================================================== */
 
 .cta-banner {
   position: relative;
-  background: var(--text-primary);
+  background: var(--bg-surface);
+  border: 1px solid var(--border-light);
+  border-left: 4px solid var(--brand-orange);
   border-radius: var(--radius-lg);
-  padding: 4rem 3.5rem;
+  padding: 3.5rem 3.25rem;
   overflow: hidden;
   display: grid;
-  grid-template-columns: 1fr auto;
+  grid-template-columns: 1.2fr 0.8fr;
   align-items: center;
-  gap: 2rem;
+  gap: 3rem;
+  box-shadow: 0 4px 24px -2px rgba(32, 33, 36, 0.06);
 }
 
 .cta-banner-content {
@@ -1804,23 +2008,23 @@ textarea.form-control {
 
 .cta-banner-title {
   font-family: var(--font-display);
-  font-size: clamp(1.75rem, 3.5vw, 2.75rem);
+  font-size: clamp(1.85rem, 3.5vw, 2.75rem);
   font-weight: 800;
-  line-height: 1.1;
+  line-height: 1.15;
   letter-spacing: -0.035em;
-  color: #ffffff;
+  color: var(--text-primary);
   margin-bottom: 1rem;
 }
 
-.cta-banner-title span {
+.cta-banner-title .highlight-text {
   color: var(--brand-orange);
 }
 
 .cta-banner-desc {
   font-family: var(--font-body);
-  font-size: 1.0625rem;
+  font-size: 1.05rem;
   line-height: 1.65;
-  color: rgba(255, 255, 255, 0.55);
+  color: var(--text-secondary);
   max-width: 520px;
   margin-bottom: 2rem;
 }
@@ -1832,60 +2036,69 @@ textarea.form-control {
   align-items: center;
 }
 
-/* Override button styles inside dark banner */
+/* Secondary button inside clean banner */
 .cta-banner .btn-secondary {
-  background: transparent;
-  border-color: rgba(255,255,255,0.2);
-  color: rgba(255,255,255,0.8);
+  background: var(--bg-surface);
+  border: 1px solid var(--border-hover);
+  color: var(--text-primary);
 }
 
 .cta-banner .btn-secondary:hover {
-  background: rgba(255,255,255,0.08);
-  border-color: rgba(255,255,255,0.35);
-  color: #fff;
+  background: var(--bg-muted);
+  border-color: var(--border-hover);
+  color: var(--brand-orange);
 }
 
-/* Decorative concentric ring system */
-.cta-banner-decoration {
-  position: absolute;
-  right: -4rem;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 380px;
-  height: 380px;
-  pointer-events: none;
-  z-index: 1;
+/* Consultation Info Card on Right */
+.cta-banner-contact-card {
+  background: var(--bg-subtle);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-md);
+  padding: 1.75rem 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
 }
 
-.cta-deco-ring {
-  position: absolute;
-  border-radius: 50%;
-  border: 1px solid rgba(255, 255, 255, 0.06);
+.cta-contact-item {
+  display: flex;
+  align-items: center;
+  gap: 0.95rem;
 }
 
-.cta-deco-ring--1 {
-  width: 200px;
-  height: 200px;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+.cta-contact-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-sm);
+  background: var(--brand-orange-light);
+  border: 1px solid var(--brand-orange-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--brand-orange);
+  flex-shrink: 0;
 }
 
-.cta-deco-ring--2 {
-  width: 300px;
-  height: 300px;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+.cta-contact-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
 }
 
-.cta-deco-ring--3 {
-  width: 380px;
-  height: 380px;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  border-color: rgba(232, 93, 4, 0.08);
+.cta-contact-label {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+}
+
+.cta-contact-value {
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-primary);
 }
 
 /* ===================================================================
@@ -1893,6 +2106,43 @@ textarea.form-control {
    =================================================================== */
 
 @media (max-width: 1024px) {
+  .hero-section {
+    min-height: auto;
+    padding: 4.5rem 0 3.5rem 0;
+  }
+  .hero-container {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+  .hero-content {
+    max-width: 100%;
+  }
+  .hero-bg-image {
+    width: 100%;
+    opacity: 0.22;
+    background-position: center center;
+    -webkit-mask-image: linear-gradient(to bottom, #000 60%, transparent 100%);
+    mask-image: linear-gradient(to bottom, #000 60%, transparent 100%);
+  }
+  .hero-floating-cards {
+    margin-left: 0;
+    max-width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.85rem;
+  }
+  .stats-grid-5 {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+  .stats-narrative-col {
+    grid-column: span 2;
+    border-left: none;
+    border-top: 1px solid rgba(231, 229, 226, 0.85);
+    padding-left: 0;
+    padding-top: 1.25rem;
+  }
   .services-icon-grid {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -1917,6 +2167,9 @@ textarea.form-control {
 }
 
 @media (max-width: 768px) {
+  .hero-floating-cards {
+    grid-template-columns: 1fr;
+  }
   /* 1-column icon grid: remove the parent border-left so we don't get
      a double-border effect (parent border-left + card border-right). */
   .services-icon-grid {
@@ -1960,12 +2213,13 @@ textarea.form-control {
     font-size: clamp(2rem, 6vw, 2.75rem);
   }
   .hero-title {
-    font-size: clamp(2.5rem, 8vw, 3.5rem);
+    font-size: clamp(2.35rem, 7.5vw, 3.25rem);
   }
 }
 
 @media (max-width: 480px) {
-  .stats-grid {
+  .stats-grid,
+  .stats-grid-5 {
     grid-template-columns: 1fr 1fr;
   }
   /* Flush CTA banner edge-to-edge on small screens — rounded corners

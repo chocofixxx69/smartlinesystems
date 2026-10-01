@@ -10,64 +10,63 @@ export default function HomePage() {
       {/* ================================================================
           HERO — Full editorial composition
           ================================================================ */}
+      {/* ================================================================
+          HERO — Reference-inspired warm sunlit composition with floating capability cards
+          ================================================================ */}
       <section className="hero-section">
-        {/* Background image: full-bleed right, fades into page */}
+        {/* Soft Warm Orange Curved Accent (Bottom-Left) */}
+        <div className="hero-corner-swoop" aria-hidden="true" />
+
+        {/* Studio Workspace Visual: Modern angled laptop with SaaS dashboard & orange backdrop */}
         <div className="hero-bg-container" aria-hidden="true">
-          <div className="hero-bg-image" style={{ backgroundImage: "url('/assets/hero-bg.jpg')" }} />
+          <div className="hero-bg-image" />
+          <div className="hero-bg-gradient-overlay" />
         </div>
 
         <div className="container hero-container">
-          {/* LEFT: Editorial text column */}
+          {/* LEFT: High-Impact Editorial Text Column */}
           <div className="hero-content">
-            <div className="badge">
-              <span className="badge-dot"></span>
-              Technology &amp; Business Management
+            <div className="hero-badge-pill">
+              <span className="hero-badge-dot"></span>
+              <span>Engineered for Cloud, AI &amp; Enterprise Growth</span>
             </div>
 
             <h1 className="hero-title">
-              Innovate<br />
-              <span className="highlight-text">Possibilities</span>
+              Innovate Possibilities.<br />
+              <span className="highlight-text">Built for Scale.</span>
             </h1>
 
             <p className="hero-lead">
-              People, Cloud-Based Bookkeeping and Business Management
-              Solutions designed for growing enterprises seeking scalable
-              digital infrastructure.
+              Track operations, automate cloud bookkeeping, and unlock real-time enterprise AI
+              insights — all in one unified platform. SmartLine Systems helps growing organizations
+              stay informed, agile, and ahead.
             </p>
 
             <div className="hero-cta-group">
-              <Button href="/contact" variant="primary" size="lg" id="heroPrimaryCta">
+              <Button href="/contact" variant="primary" size="lg" className="btn-pill" id="heroPrimaryCta">
                 Get Started
-                <svg className="arrow-right" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="16" height="16" aria-hidden="true">
+                <svg className="arrow-right" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" width="16" height="16" aria-hidden="true">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
                 </svg>
               </Button>
-              <Button href="/services" variant="secondary" size="lg" id="heroSecondaryCta">
+              <Button href="/services" variant="secondary" size="lg" className="btn-pill" id="heroSecondaryCta">
                 Explore Services
               </Button>
-            </div>
-          </div>
-
-          {/* RIGHT: Floating status pill, anchored in image zone */}
-          <div className="hero-badge-floating" aria-hidden="true">
-            <div className="hero-floating-pill">
-              <span className="live-pulse"></span>
-              <span>Global Cloud &amp; Analytics Operations</span>
             </div>
           </div>
         </div>
       </section>
 
       {/* ================================================================
-          STATS STRIP — Credential bar: clean, consistent, brand-orange
+          STATS STRIP — Warm Credential bar: 4 metrics + narrative quote
           ================================================================ */}
-      <section className="stats-strip" aria-label="Company highlights">
+      <section className="stats-strip" aria-label="Company highlights and operational scale">
         <div className="container">
-          <div className="stats-grid">
+          <div className="stats-grid-5">
 
             <div className="stat-card">
               <div className="stat-icon-circle" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" width="22" height="22">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="20" height="20">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
                 </svg>
               </div>
@@ -79,8 +78,8 @@ export default function HomePage() {
 
             <div className="stat-card">
               <div className="stat-icon-circle" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" width="22" height="22">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="20" height="20">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
                 </svg>
               </div>
               <div className="stat-text">
@@ -91,19 +90,7 @@ export default function HomePage() {
 
             <div className="stat-card">
               <div className="stat-icon-circle" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" width="22" height="22">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z"/>
-                </svg>
-              </div>
-              <div className="stat-text">
-                <div className="stat-value">24<span>/7</span></div>
-                <div className="stat-label">Dedicated Support</div>
-              </div>
-            </div>
-
-            <div className="stat-card">
-              <div className="stat-icon-circle" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" width="22" height="22">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="20" height="20">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 00-9.78 2.096A4.001 4.001 0 003 15z"/>
                 </svg>
               </div>
@@ -111,6 +98,24 @@ export default function HomePage() {
                 <div className="stat-value">100<span>%</span></div>
                 <div className="stat-label">Cloud-Native Systems</div>
               </div>
+            </div>
+
+            <div className="stat-card">
+              <div className="stat-icon-circle" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="20" height="20">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                </svg>
+              </div>
+              <div className="stat-text">
+                <div className="stat-value">99.9<span>%</span></div>
+                <div className="stat-label">System Uptime SLA</div>
+              </div>
+            </div>
+
+            <div className="stats-narrative-col">
+              <p className="stats-narrative-text">
+                From automated cloud bookkeeping to custom enterprise AI, SmartLine Systems stays with you at every step of your digital transformation.
+              </p>
             </div>
 
           </div>
@@ -357,7 +362,8 @@ export default function HomePage() {
       </section>
 
       {/* ================================================================
-          FINAL CTA — Bold, confident close
+      {/* ================================================================
+          FINAL CTA — Grounded Executive Enterprise Action Block
           ================================================================ */}
       <section className="section">
         <div className="container">
@@ -365,28 +371,61 @@ export default function HomePage() {
             <div className="cta-banner-content">
               <h2 className="cta-banner-title">
                 Start Your<br />
-                <span style={{ color: 'var(--brand-orange)' }}>Digital Transformation</span>
+                <span className="highlight-text">Digital Transformation</span>
               </h2>
               <p className="cta-banner-desc">
-                Connect with our technology consulting team to discuss your requirements
-                and explore tailored enterprise solutions.
+                Connect with our technology consulting team to discuss your software engineering,
+                cloud systems, and business management requirements.
               </p>
               <div className="cta-banner-actions">
-                <Button href="/contact" variant="primary" size="lg">
+                <Button href="/contact" variant="primary" size="lg" className="btn-pill" id="ctaBannerPrimaryBtn">
                   Get Started
-                  <svg className="arrow-right" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="16" height="16">
+                  <svg className="arrow-right" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" width="16" height="16" aria-hidden="true">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
                   </svg>
                 </Button>
-                <Button href="/interns" variant="secondary" size="lg">
-                  View Talent Directory
+                <Button href="/services" variant="secondary" size="lg" className="btn-pill" id="ctaBannerSecondaryBtn">
+                  Explore Services
                 </Button>
               </div>
             </div>
-            <div className="cta-banner-decoration" aria-hidden="true">
-              <div className="cta-deco-ring cta-deco-ring--1"></div>
-              <div className="cta-deco-ring cta-deco-ring--2"></div>
-              <div className="cta-deco-ring cta-deco-ring--3"></div>
+
+            <div className="cta-banner-contact-card">
+              <div className="cta-contact-item">
+                <div className="cta-contact-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="18" height="18">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                  </svg>
+                </div>
+                <div className="cta-contact-text">
+                  <div className="cta-contact-label">Direct Consultation</div>
+                  <div className="cta-contact-value">contact@smartlinesystems.com</div>
+                </div>
+              </div>
+
+              <div className="cta-contact-item">
+                <div className="cta-contact-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="18" height="18">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                  </svg>
+                </div>
+                <div className="cta-contact-text">
+                  <div className="cta-contact-label">Response Time</div>
+                  <div className="cta-contact-value">Within 24 Business Hours</div>
+                </div>
+              </div>
+
+              <div className="cta-contact-item">
+                <div className="cta-contact-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="18" height="18">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                  </svg>
+                </div>
+                <div className="cta-contact-text">
+                  <div className="cta-contact-label">Project Delivery</div>
+                  <div className="cta-contact-value">Fixed-Price Turnkey Architecture</div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
