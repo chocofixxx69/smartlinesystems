@@ -34,6 +34,16 @@ export default function Navbar() {
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [isOpen]);
 
+  // Lock body scroll when mobile drawer is open
+  useEffect(() => {
+    if (isOpen) {
+      document.body.classList.add('nav-open');
+    } else {
+      document.body.classList.remove('nav-open');
+    }
+    return () => document.body.classList.remove('nav-open');
+  }, [isOpen]);
+
   const navLinks = [
     { label: 'Home', href: '/' },
     { label: 'Services', href: '/services' },

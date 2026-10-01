@@ -74,7 +74,7 @@ export default function ServicesPage() {
 
             <ServiceCard
               title="Internet of Things (IoT)"
-              description="CyberDude Network's primary goal is to combine the hardware with the software. Cyberdude products are integrated with Internet of Things telemetry and real-time streams."
+              description="SmartLine Systems combines hardware and software innovation. Our IoT solutions are integrated with telemetry streams and real-time sensor data for connected business systems."
               tags={['Hardware Integration', 'Sensor Telemetry', 'IoT Gateways']}
               actionHref="/contact?service=iot"
               actionText="Discuss IoT Integration"
@@ -163,7 +163,7 @@ export default function ServicesPage() {
 
             <div className="card">
               <h3 className="card-title">Our 24x7 Support</h3>
-              <p className="card-desc">We provide support regarding product, sales, enquiry and premium support towards our products. Find customer centered atmosphere in CyberDude for 24x7.</p>
+              <p className="card-desc">We provide round-the-clock support for product, sales, and technical enquiries. SmartLine Systems ensures a customer-centred experience with 24x7 operational SLA coverage.</p>
               <Link href="/contact" className="card-link">
                 Contact Support &rarr;
               </Link>

@@ -179,6 +179,8 @@ function ContactFormContent() {
               <option value="mobile-apps">Mobile App Development</option>
               <option value="iot">Internet of Things (IoT)</option>
               <option value="consulting">Strategic Tech Consulting</option>
+              <option value="outsourcing">Outsourcing &amp; Engineering Pods</option>
+              <option value="products">Innovative Products &amp; CDN</option>
               <option value="package-designs">Package: Designs (₹5,999)</option>
               <option value="package-web-dev">Package: Web Development (₹29,999)</option>
               <option value="package-ecommerce">Package: E-commerce (₹49,999)</option>
@@ -264,7 +266,7 @@ export default function ContactPage() {
               <div className="card" style={{ backgroundColor: 'var(--bg-subtle)' }}>
                 <h3 className="card-title">Our 24x7 Support</h3>
                 <p className="card-desc">
-                  We provide support regarding product, sales, enquiry and premium support towards our products. Find customer centered atmosphere in CyberDude for 24x7.
+                  We provide round-the-clock support for product, sales, and technical enquiries. SmartLine Systems ensures a customer-centred experience with 24x7 operational coverage.
                 </p>
                 <div style={{ fontSize: '0.8125rem', fontWeight: 600, color: 'var(--brand-orange)' }}>
                   24x7 Operational SLA Coverage
