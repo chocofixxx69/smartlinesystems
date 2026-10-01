@@ -14,8 +14,11 @@ export default function HomePage() {
           HERO — Reference-inspired warm sunlit composition with floating capability cards
           ================================================================ */}
       <section className="hero-section">
-        {/* Soft Warm Orange Curved Accent (Bottom-Left) */}
+        {/* Soft Warm Orange Curved Accent & Ambient Orbs */}
         <div className="hero-corner-swoop" aria-hidden="true" />
+        <div className="hero-ambient-orb-top-right" aria-hidden="true" />
+        <div className="hero-ambient-orb-mid-left" aria-hidden="true" />
+        <div className="hero-ambient-orb-bottom-right" aria-hidden="true" />
 
         {/* Studio Workspace Visual: Modern angled laptop with SaaS dashboard & orange backdrop */}
         <div className="hero-bg-container" aria-hidden="true">
@@ -32,7 +35,7 @@ export default function HomePage() {
             </div>
 
             <h1 className="hero-title">
-              Innovate Possibilities.<br />
+              Innovate <span className="hero-break-mobile"><br /></span>Possibilities.<br />
               <span className="highlight-text">Built for Scale.</span>
             </h1>
 
