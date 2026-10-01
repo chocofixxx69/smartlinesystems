@@ -469,6 +469,13 @@ a:hover {
   border-radius: var(--radius-xs);
 }
 
+.mobile-nav-drawer .nav-link::after,
+.mobile-nav-drawer .nav-link.active::after {
+  display: none !important;
+  content: none !important;
+}
+
+
 /* ===================================================================
    BUTTON SYSTEM
    =================================================================== */
