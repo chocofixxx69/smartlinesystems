@@ -2218,7 +2218,7 @@ textarea.form-control {
     width: calc(100% + 3rem);
     margin-left: -1.5rem;
     margin-right: -1.5rem;
-    margin-top: -1.25rem;
+    margin-top: -3.75rem;
     position: relative;
     z-index: 2;
   }
@@ -2413,7 +2413,7 @@ textarea.form-control {
     width: calc(100% + 2.5rem);
     margin-left: -1.25rem;
     margin-right: -1.25rem;
-    margin-top: -1.25rem;
+    margin-top: -3.75rem;
   }
   .hero-feature-trio {
     padding: 0.85rem 1rem 1.25rem 1rem;
@@ -2556,7 +2556,7 @@ textarea.form-control {
     width: calc(100% + 2rem);
     margin-left: -1rem;
     margin-right: -1rem;
-    margin-top: -1.25rem;
+    margin-top: -3.5rem;
   }
   .hero-feature-trio {
     padding: 0.75rem 0.5rem 1.15rem 0.5rem;
