@@ -61,7 +61,7 @@ export default function HomePage() {
             <div className="hero-mobile-visual" aria-hidden="true">
               <div className="hero-mobile-image-wrap">
                 <img
-                  src="/assets/hero-reference-inspired.jpg"
+                  src="/assets/hero-mobile-visual.jpg"
                   alt="SmartLine Systems Cloud &amp; AI Enterprise Platform"
                   className="hero-mobile-img"
                   loading="eager"
