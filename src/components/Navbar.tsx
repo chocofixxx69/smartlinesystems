@@ -88,9 +88,6 @@ export default function Navbar() {
 
         {/* Actions */}
         <div className="nav-actions">
-          <Link href="/contact" className="nav-text-link">
-            Consultation
-          </Link>
           <Button href="/contact" variant="primary" size="sm" className="btn-pill" id="navCtaBtn">
             Get Started
             <svg className="arrow-right" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" width="15" height="15" aria-hidden="true">
@@ -149,9 +146,6 @@ export default function Navbar() {
             <svg className="arrow-right" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="16" height="16" aria-hidden="true">
               <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
             </svg>
-          </Button>
-          <Button href="/contact" variant="secondary" style={{ width: '100%', justifyContent: 'center' }} onClick={() => setIsOpen(false)}>
-            Book Consultation
           </Button>
         </div>
       </nav>

@@ -32,3 +32,4 @@ yarn-error.log*
 
 # IDE & AI agents
 .agents/
+*.tsbuildinfo
