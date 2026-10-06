@@ -2,7 +2,21 @@ import React from 'react';
 import Link from 'next/link';
 import Button from '@/components/Button';
 import SectionHeading from '@/components/SectionHeading';
-import PackageCard from '@/components/PackageCard';
+import {
+  ArrowRight,
+  Cloud,
+  BarChart3,
+  TrendingUp,
+  Clock,
+  Users,
+  Activity,
+  LayoutDashboard,
+  Code2,
+  ReceiptText,
+  Wifi,
+  Mail,
+  CheckCircle2,
+} from 'lucide-react';
 
 export default function HomePage() {
   return (
@@ -48,9 +62,7 @@ export default function HomePage() {
             <div className="hero-cta-group">
               <Button href="/contact" variant="primary" size="lg" className="btn-pill" id="heroPrimaryCta">
                 Get Started
-                <svg className="arrow-right" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" width="16" height="16" aria-hidden="true">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
-                </svg>
+                <ArrowRight size={16} className="arrow-right" aria-hidden="true" />
               </Button>
               <Button href="/services" variant="secondary" size="lg" className="btn-pill" id="heroSecondaryCta">
                 Explore Services
@@ -71,9 +83,7 @@ export default function HomePage() {
               <div className="hero-feature-trio">
                 <div className="feature-trio-item">
                   <div className="feature-trio-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="18" height="18">
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 00-9.78 2.096A4.001 4.001 0 003 15z" />
-                    </svg>
+                    <Cloud size={18} />
                   </div>
                   <div className="feature-trio-title">Cloud Ready</div>
                   <div className="feature-trio-sub">Scalable &amp; Secure</div>
@@ -81,14 +91,7 @@ export default function HomePage() {
 
                 <div className="feature-trio-item">
                   <div className="feature-trio-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="18" height="18">
-                      <rect x="4" y="4" width="16" height="16" rx="2" />
-                      <rect x="9" y="9" width="6" height="6" />
-                      <line x1="9" y1="1" x2="9" y2="4" /><line x1="15" y1="1" x2="15" y2="4" />
-                      <line x1="9" y1="20" x2="9" y2="23" /><line x1="15" y1="20" x2="15" y2="23" />
-                      <line x1="20" y1="9" x2="23" y2="9" /><line x1="20" y1="15" x2="23" y2="15" />
-                      <line x1="1" y1="9" x2="4" y2="9" /><line x1="1" y1="15" x2="4" y2="15" />
-                    </svg>
+                    <BarChart3 size={18} />
                   </div>
                   <div className="feature-trio-title">AI Powered</div>
                   <div className="feature-trio-sub">Smarter Decisions</div>
@@ -96,10 +99,7 @@ export default function HomePage() {
 
                 <div className="feature-trio-item">
                   <div className="feature-trio-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="18" height="18">
-                      <polyline points="23 6 13.5 15.5 8.5 10.5 1 18" />
-                      <polyline points="17 6 23 6 23 12" />
-                    </svg>
+                    <TrendingUp size={18} />
                   </div>
                   <div className="feature-trio-title">Enterprise Grade</div>
                   <div className="feature-trio-sub">Built for Tomorrow</div>
@@ -119,9 +119,7 @@ export default function HomePage() {
 
             <div className="stat-card">
               <div className="stat-icon-circle" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="20" height="20">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                </svg>
+                <Clock size={20} />
               </div>
               <div className="stat-text">
                 <div className="stat-value">6<span>+</span></div>
@@ -131,9 +129,7 @@ export default function HomePage() {
 
             <div className="stat-card">
               <div className="stat-icon-circle" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="20" height="20">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
-                </svg>
+                <Users size={20} />
               </div>
               <div className="stat-text">
                 <div className="stat-value">50<span>+</span></div>
@@ -143,9 +139,7 @@ export default function HomePage() {
 
             <div className="stat-card">
               <div className="stat-icon-circle" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="20" height="20">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 00-9.78 2.096A4.001 4.001 0 003 15z"/>
-                </svg>
+                <Cloud size={20} />
               </div>
               <div className="stat-text">
                 <div className="stat-value">100<span>%</span></div>
@@ -155,9 +149,7 @@ export default function HomePage() {
 
             <div className="stat-card">
               <div className="stat-icon-circle" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="20" height="20">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/>
-                </svg>
+                <Activity size={20} />
               </div>
               <div className="stat-text">
                 <div className="stat-value">99.9<span>%</span></div>
@@ -198,9 +190,7 @@ export default function HomePage() {
               </p>
               <Link href="/services" className="services-editorial-link">
                 View All Services
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="16" height="16" aria-hidden="true">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
-                </svg>
+                <ArrowRight size={16} aria-hidden="true" />
               </Link>
             </div>
           </div>
@@ -209,9 +199,7 @@ export default function HomePage() {
           <div className="services-icon-grid">
             <div className="service-icon-card">
               <div className="service-icon-wrap" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" width="28" height="28">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/>
-                </svg>
+                <LayoutDashboard size={28} />
               </div>
               <h3 className="service-icon-title">SaaS apps with AI</h3>
               <p className="service-icon-desc">Automate business workflows integrating Advanced AI to predict future endeavors.</p>
@@ -220,9 +208,7 @@ export default function HomePage() {
 
             <div className="service-icon-card">
               <div className="service-icon-wrap" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" width="28" height="28">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/>
-                </svg>
+                <Code2 size={28} />
               </div>
               <h3 className="service-icon-title">Design &amp; Development</h3>
               <p className="service-icon-desc">Lightweight Web and Mobile Applications engineered for reliability and user adoption.</p>
@@ -231,9 +217,7 @@ export default function HomePage() {
 
             <div className="service-icon-card">
               <div className="service-icon-wrap" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" width="28" height="28">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 00-9.78 2.096A4.001 4.001 0 003 15z"/>
-                </svg>
+                <ReceiptText size={28} />
               </div>
               <h3 className="service-icon-title">Cloud Bookkeeping</h3>
               <p className="service-icon-desc">Centralized financial data systems that streamline operations, auditing, and corporate accounting.</p>
@@ -242,9 +226,7 @@ export default function HomePage() {
 
             <div className="service-icon-card">
               <div className="service-icon-wrap" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" width="28" height="28">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"/>
-                </svg>
+                <Wifi size={28} />
               </div>
               <h3 className="service-icon-title">Internet of Things</h3>
               <p className="service-icon-desc">Hardware and software integration with IoT telemetry for connected business systems.</p>
@@ -327,94 +309,13 @@ export default function HomePage() {
               </p>
               <Button href="/about" variant="secondary" size="md">
                 Learn More About Us
-                <svg className="arrow-right" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="16" height="16">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
-                </svg>
+                <ArrowRight size={16} className="arrow-right" aria-hidden="true" />
               </Button>
             </div>
           </div>
         </div>
       </section>
 
-      {/* ================================================================
-          PACKAGES PREVIEW
-          ================================================================ */}
-      <section className="section" style={{ backgroundColor: 'var(--bg-subtle)' }}>
-        <div className="container">
-          <SectionHeading
-            badge="Turnkey Pricing"
-            title="Service"
-            highlight="Packages"
-            subtitle="Transparent, fixed one-time project costs tailored for businesses of all stages."
-          />
-
-          <div className="grid-4">
-            <PackageCard
-              name="Designs"
-              price="5,999"
-              subtitle="Brand Identity Package"
-              features={[
-                'Professional Logo Design',
-                'Complete Brand Identity',
-                '3 Marketing Collaterals',
-                'UI/UX Concept Mockups',
-                'Social Media Graphics Pack',
-              ]}
-              actionHref="/packages"
-            />
-            <PackageCard
-              name="Web Development"
-              price="29,999"
-              subtitle="Full Website Solution"
-              features={[
-                'Fully Responsive Website',
-                'Custom Frontend Development',
-                'Backend System Integration',
-                'Performance Optimization',
-                'Advanced SEO Configuration',
-              ]}
-              actionHref="/packages"
-            />
-            <PackageCard
-              name="E-commerce Solution"
-              price="49,999"
-              subtitle="Online Storefront"
-              features={[
-                'Complete Online Store Setup',
-                'Multiple Payment Gateways',
-                'Inventory Management System',
-                'Product Catalog Management',
-                'Mobile-Responsive Design',
-              ]}
-              actionHref="/packages"
-            />
-            <PackageCard
-              name="Custom Enterprise"
-              price="99,999"
-              subtitle="Tailored Architecture"
-              features={[
-                'Comprehensive Consultation',
-                'Fully Tailored Solution',
-                'Unlimited Revisions',
-                '24/7 Technical Support',
-                'Scalable Enterprise Architecture',
-              ]}
-              actionHref="/packages"
-            />
-          </div>
-
-          <div style={{ textAlign: 'center', marginTop: '2.5rem' }}>
-            <Button href="/packages" variant="secondary" size="md">
-              View All Packages
-              <svg className="arrow-right" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="16" height="16">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
-              </svg>
-            </Button>
-          </div>
-        </div>
-      </section>
-
-      {/* ================================================================
       {/* ================================================================
           FINAL CTA — Grounded Executive Enterprise Action Block
           ================================================================ */}
@@ -433,9 +334,7 @@ export default function HomePage() {
               <div className="cta-banner-actions">
                 <Button href="/contact" variant="primary" size="lg" className="btn-pill" id="ctaBannerPrimaryBtn">
                   Get Started
-                  <svg className="arrow-right" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" width="16" height="16" aria-hidden="true">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
-                  </svg>
+                  <ArrowRight size={16} className="arrow-right" aria-hidden="true" />
                 </Button>
                 <Button href="/services" variant="secondary" size="lg" className="btn-pill" id="ctaBannerSecondaryBtn">
                   Explore Services
@@ -446,9 +345,7 @@ export default function HomePage() {
             <div className="cta-banner-contact-card">
               <div className="cta-contact-item">
                 <div className="cta-contact-icon" aria-hidden="true">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="18" height="18">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
-                  </svg>
+                  <Mail size={18} />
                 </div>
                 <div className="cta-contact-text">
                   <div className="cta-contact-label">Direct Consultation</div>
@@ -458,9 +355,7 @@ export default function HomePage() {
 
               <div className="cta-contact-item">
                 <div className="cta-contact-icon" aria-hidden="true">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="18" height="18">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                  </svg>
+                  <Clock size={18} />
                 </div>
                 <div className="cta-contact-text">
                   <div className="cta-contact-label">Response Time</div>
@@ -470,9 +365,7 @@ export default function HomePage() {
 
               <div className="cta-contact-item">
                 <div className="cta-contact-icon" aria-hidden="true">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="18" height="18">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                  </svg>
+                  <CheckCircle2 size={18} />
                 </div>
                 <div className="cta-contact-text">
                   <div className="cta-contact-label">Project Delivery</div>

@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { Code2, ArrowRight, Menu, X } from 'lucide-react';
 import Button from './Button';
 
 export default function Navbar() {
@@ -47,7 +48,6 @@ export default function Navbar() {
   const navLinks = [
     { label: 'Home', href: '/' },
     { label: 'Services', href: '/services' },
-    { label: 'Packages', href: '/packages' },
     { label: 'About', href: '/about' },
     { label: 'Interns', href: '/interns' },
     { label: 'Contact', href: '/contact' },
@@ -58,10 +58,7 @@ export default function Navbar() {
       <div className="container nav-container">
         <Link href="/" className="brand-logo" id="navLogo">
           <div className="brand-icon-box" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" width="20" height="20">
-              <polyline points="16 18 22 12 16 6"></polyline>
-              <polyline points="8 6 2 12 8 18"></polyline>
-            </svg>
+            <Code2 size={20} strokeWidth={2.2} />
           </div>
           <div className="brand-text">
             <span className="title">SmartLine<span>Systems</span></span>
@@ -90,9 +87,7 @@ export default function Navbar() {
         <div className="nav-actions">
           <Button href="/contact" variant="primary" size="sm" className="btn-pill" id="navCtaBtn">
             Get Started
-            <svg className="arrow-right" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" width="15" height="15" aria-hidden="true">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
-            </svg>
+            <ArrowRight className="arrow-right" size={15} strokeWidth={2.2} aria-hidden="true" />
           </Button>
 
           <button
@@ -104,16 +99,9 @@ export default function Navbar() {
             type="button"
           >
             {isOpen ? (
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                <line x1="18" y1="6" x2="6" y2="18"></line>
-                <line x1="6" y1="6" x2="18" y2="18"></line>
-              </svg>
+              <X size={24} strokeWidth={2} aria-hidden="true" />
             ) : (
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                <line x1="3" y1="12" x2="21" y2="12"></line>
-                <line x1="3" y1="6" x2="21" y2="6"></line>
-                <line x1="3" y1="18" x2="21" y2="18"></line>
-              </svg>
+              <Menu size={24} strokeWidth={2} aria-hidden="true" />
             )}
           </button>
         </div>
@@ -143,9 +131,7 @@ export default function Navbar() {
         <div style={{ marginTop: '0.75rem', paddingTop: '0.75rem', borderTop: '1px solid var(--border-light)', display: 'flex', flexDirection: 'column', gap: '0.6rem' }}>
           <Button href="/contact" variant="primary" style={{ width: '100%', justifyContent: 'center' }} onClick={() => setIsOpen(false)}>
             Get Started
-            <svg className="arrow-right" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="16" height="16" aria-hidden="true">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
-            </svg>
+            <ArrowRight className="arrow-right" size={16} strokeWidth={2} aria-hidden="true" />
           </Button>
         </div>
       </nav>

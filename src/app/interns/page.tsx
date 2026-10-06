@@ -2,6 +2,7 @@ import React from 'react';
 import SectionHeading from '@/components/SectionHeading';
 import InternCard from '@/components/InternCard';
 import Button from '@/components/Button';
+import { ArrowRight } from 'lucide-react';
 
 interface InternProfile {
   id: string;
@@ -105,9 +106,7 @@ export default function InternsPage() {
           </p>
           <Button href="/contact" variant="primary" size="md">
             Inquire About Training Programs
-            <svg className="arrow-right" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="16" height="16">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
-            </svg>
+            <ArrowRight size={16} className="arrow-right" aria-hidden="true" />
           </Button>
         </div>
       </section>

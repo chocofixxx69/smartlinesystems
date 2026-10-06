@@ -3,6 +3,7 @@ import Link from 'next/link';
 import SectionHeading from '@/components/SectionHeading';
 import ServiceCard from '@/components/ServiceCard';
 import Button from '@/components/Button';
+import { LayoutDashboard, Code2, Smartphone, Wifi, Globe, Terminal } from 'lucide-react';
 
 export default function ServicesPage() {
   return (
@@ -38,11 +39,7 @@ export default function ServicesPage() {
               tags={['AI Workflows', 'SaaS Architecture', 'Automation']}
               actionHref="/contact?service=ai-saas"
               actionText="Discuss AI SaaS"
-              icon={
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="22" height="22">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
-                </svg>
-              }
+              icon={<LayoutDashboard size={22} />}
             />
 
             <ServiceCard
@@ -51,11 +48,7 @@ export default function ServicesPage() {
               tags={['UI/UX Design', 'Web Platforms', 'Lightweight Apps']}
               actionHref="/contact?service=web-dev"
               actionText="Discuss Web Dev"
-              icon={
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="22" height="22">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
-                </svg>
-              }
+              icon={<Code2 size={22} />}
             />
 
             <ServiceCard
@@ -64,12 +57,7 @@ export default function ServicesPage() {
               tags={['iOS & Android', 'Cross-Platform', 'Mobile Ecosystem']}
               actionHref="/contact?service=mobile-apps"
               actionText="Discuss Mobile Apps"
-              icon={
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="22" height="22">
-                  <rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect>
-                  <line x1="12" y1="18" x2="12.01" y2="18"></line>
-                </svg>
-              }
+              icon={<Smartphone size={22} />}
             />
 
             <ServiceCard
@@ -78,11 +66,7 @@ export default function ServicesPage() {
               tags={['Hardware Integration', 'Sensor Telemetry', 'IoT Gateways']}
               actionHref="/contact?service=iot"
               actionText="Discuss IoT Integration"
-              icon={
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="22" height="22">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z" />
-                </svg>
-              }
+              icon={<Wifi size={22} />}
             />
           </div>
         </div>
@@ -103,13 +87,7 @@ export default function ServicesPage() {
               tags={['Content Delivery', 'Distributed Systems', 'Edge Technology']}
               actionHref="/contact?service=products"
               actionText="Learn More"
-              icon={
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="22" height="22">
-                  <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
-                  <polyline points="2 17 12 22 22 17"></polyline>
-                  <polyline points="2 12 12 17 22 12"></polyline>
-                </svg>
-              }
+              icon={<Globe size={22} />}
             />
 
             <ServiceCard
@@ -118,11 +96,7 @@ export default function ServicesPage() {
               tags={['Custom Architecture', 'Backend Services', 'API Integration']}
               actionHref="/contact?service=web-dev"
               actionText="Learn More"
-              icon={
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="22" height="22">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M14 10l-2 1m0 0l-2-1m2 1v2.5M20 7l-2 1m2-1l-2-1m2 1v2.5M14 4l-2-1-2 1M4 7l2-1M4 7l2 1M4 7v2.5M12 21l-2-1m2 1l2-1m-2 1v-2.5M6 18l-2-1v-2.5M18 18l2-1v-2.5" />
-                </svg>
-              }
+              icon={<Terminal size={22} />}
             />
           </div>
         </div>
@@ -177,11 +151,10 @@ export default function ServicesPage() {
         <div className="container text-center">
           <h2 style={{ fontSize: '1.5rem', marginBottom: '0.5rem' }}>Need a Custom Technical Architecture?</h2>
           <p style={{ color: 'var(--text-muted)', marginBottom: '1.5rem', fontSize: '0.95rem' }}>
-            Explore our fixed-scope packages or connect directly with our consultants for an individualized scope.
+            Connect directly with our consultants for an individualized scope.
           </p>
           <div style={{ display: 'flex', justifyContent: 'center', gap: '1rem', flexWrap: 'wrap' }}>
-            <Button href="/packages" variant="primary" size="md">View Service Packages</Button>
-            <Button href="/contact" variant="secondary" size="md">Contact an Architect</Button>
+            <Button href="/contact" variant="primary" size="md">Contact an Architect</Button>
           </div>
         </div>
       </section>

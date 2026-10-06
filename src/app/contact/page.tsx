@@ -3,11 +3,11 @@
 import React, { Suspense, useState, useEffect } from 'react';
 import { useSearchParams } from 'next/navigation';
 import Button from '@/components/Button';
+import { Phone, Mail, ShieldCheck, MapPin, ArrowRight } from 'lucide-react';
 
 function ContactFormContent() {
   const searchParams = useSearchParams();
   const serviceParam = searchParams.get('service') || 'web-dev';
-  const packageParam = searchParams.get('package');
 
   const [formData, setFormData] = useState({
     name: '',
@@ -24,10 +24,7 @@ function ContactFormContent() {
     if (serviceParam) {
       setFormData((prev) => ({ ...prev, service: serviceParam }));
     }
-    if (packageParam) {
-      setFormData((prev) => ({ ...prev, service: `package-${packageParam}` }));
-    }
-  }, [serviceParam, packageParam]);
+  }, [serviceParam]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -67,47 +64,46 @@ function ContactFormContent() {
   const mailtoHref = `mailto:info@smartlinesystems.org?subject=${encodeURIComponent(
     `Project Inquiry from ${formData.name} (${formData.service})`
   )}&body=${encodeURIComponent(
-    `Name: ${formData.name}\nEmail: ${formData.email}\nPhone: ${formData.phone}\nService/Package: ${formData.service}\n\nProject Details:\n${formData.details}`
+    `Name: ${formData.name}\nEmail: ${formData.email}\nPhone: ${formData.phone}\nService: ${formData.service}\n\nProject Details:\n${formData.details}`
   )}`;
 
   return (
-    <div style={{ background: 'var(--bg-surface)', border: '1px solid var(--border-card)', borderRadius: 'var(--radius-md)', padding: '2rem', boxShadow: 'var(--shadow-xs)' }}>
-      <h2 style={{ fontSize: '1.4rem', marginBottom: '0.35rem' }}>Send an Inquiry</h2>
-      <p style={{ color: 'var(--text-muted)', fontSize: '0.875rem', marginBottom: '1.75rem' }}>
-        Fill out the form below to outline your project requirements.
-      </p>
+    <div className="contact-form-card">
+      <div className="contact-card-header">
+        <h2 className="contact-card-title">Send an Inquiry</h2>
+        <p className="contact-card-sub">
+          Fill out the form below to outline your project requirements.
+        </p>
+      </div>
 
       {submitted ? (
-        <div style={{ padding: '1.5rem', background: 'var(--bg-subtle)', border: '1px solid var(--border-light)', borderRadius: 'var(--radius-sm)' }}>
-          <div style={{ color: 'var(--brand-orange)', fontWeight: 700, fontSize: '1.05rem', marginBottom: '0.5rem' }}>
+        <div style={{ padding: '1.25rem', background: 'var(--bg-subtle)', border: '1px solid var(--border-light)', borderRadius: 'var(--radius-sm)' }}>
+          <div style={{ color: 'var(--brand-orange)', fontWeight: 700, fontSize: '1rem', marginBottom: '0.4rem' }}>
             Inquiry Prepared
           </div>
-          <p style={{ fontSize: '0.875rem', color: 'var(--text-secondary)', lineHeight: '1.6', marginBottom: '1rem' }}>
-            <strong>Backend Integration Notice:</strong> Direct server-side form transmission is currently pending backend mail-service deployment. To ensure your inquiry reaches our team without delay, please use the button below to send your details directly via email:
+          <p style={{ fontSize: '0.825rem', color: 'var(--text-secondary)', lineHeight: '1.5', marginBottom: '0.85rem' }}>
+            Direct server-side transmission is pending backend deployment. Click below to send your details directly via email:
           </p>
 
-          <div style={{ background: 'var(--bg-surface)', padding: '1rem', borderRadius: 'var(--radius-xs)', border: '1px solid var(--border-card)', fontSize: '0.85rem', marginBottom: '1.25rem' }}>
+          <div style={{ background: 'var(--bg-surface)', padding: '0.75rem', borderRadius: 'var(--radius-xs)', border: '1px solid var(--border-card)', fontSize: '0.8125rem', marginBottom: '1rem' }}>
             <div><strong>From:</strong> {formData.name} ({formData.email})</div>
             <div><strong>Phone:</strong> {formData.phone}</div>
             <div><strong>Service:</strong> {formData.service}</div>
-            <div style={{ marginTop: '0.5rem' }}><strong>Details:</strong> {formData.details}</div>
+            <div style={{ marginTop: '0.35rem' }}><strong>Details:</strong> {formData.details}</div>
           </div>
 
-          <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap' }}>
-            <Button href={mailtoHref} variant="primary" size="md">
-              Send via Default Email Client
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="16" height="16">
-                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
-                <polyline points="22,6 12,13 2,6"/>
-              </svg>
+          <div style={{ display: 'flex', gap: '0.65rem', flexWrap: 'wrap' }}>
+            <Button href={mailtoHref} variant="primary" size="sm">
+              Send via Email Client
+              <Mail size={15} />
             </Button>
-            <Button variant="secondary" size="md" onClick={() => setSubmitted(false)}>
+            <Button variant="secondary" size="sm" onClick={() => setSubmitted(false)}>
               Edit Inquiry
             </Button>
           </div>
         </div>
       ) : (
-        <form onSubmit={handleSubmit} noValidate>
+        <form onSubmit={handleSubmit} noValidate style={{ display: 'flex', flexDirection: 'column', flex: 1 }}>
           <div className="form-group">
             <label className="form-label" htmlFor="contactName">Full Name <span className="req" aria-hidden="true">*</span></label>
             <input
@@ -126,7 +122,7 @@ function ContactFormContent() {
             {errors.name && <span id="contactNameError" className="form-error" role="alert">{errors.name}</span>}
           </div>
 
-          <div className="grid-2" style={{ gap: '1rem' }}>
+          <div className="grid-2" style={{ gap: '0.75rem' }}>
             <div className="form-group">
               <label className="form-label" htmlFor="contactEmail">Work Email <span className="req" aria-hidden="true">*</span></label>
               <input
@@ -165,7 +161,7 @@ function ContactFormContent() {
           </div>
 
           <div className="form-group">
-            <label className="form-label" htmlFor="projectScope">Service or Package</label>
+            <label className="form-label" htmlFor="projectScope">Service Focus</label>
             <select
               id="projectScope"
               name="service"
@@ -181,10 +177,6 @@ function ContactFormContent() {
               <option value="consulting">Strategic Tech Consulting</option>
               <option value="outsourcing">Outsourcing &amp; Engineering Pods</option>
               <option value="products">Innovative Products &amp; CDN</option>
-              <option value="package-designs">Package: Designs (₹5,999)</option>
-              <option value="package-web-dev">Package: Web Development (₹29,999)</option>
-              <option value="package-ecommerce">Package: E-commerce (₹49,999)</option>
-              <option value="package-enterprise">Package: Custom Enterprise (₹99,999)</option>
             </select>
           </div>
 
@@ -193,6 +185,7 @@ function ContactFormContent() {
             <textarea
               id="projectDetails"
               name="details"
+              rows={3}
               className="form-control"
               placeholder="Outline your timeline, goals, and technical specifications..."
               value={formData.details}
@@ -205,8 +198,9 @@ function ContactFormContent() {
             {errors.details && <span id="projectDetailsError" className="form-error" role="alert">{errors.details}</span>}
           </div>
 
-          <Button type="submit" variant="primary" size="lg" style={{ width: '100%', marginTop: '0.5rem' }}>
+          <Button type="submit" variant="primary" size="md" className="btn-pill" style={{ width: '100%', marginTop: 'auto', paddingTop: '0.65rem', paddingBottom: '0.65rem', justifyContent: 'center' }}>
             Submit Inquiry
+            <ArrowRight size={15} className="arrow-right" aria-hidden="true" />
           </Button>
         </form>
       )}
@@ -216,66 +210,95 @@ function ContactFormContent() {
 
 export default function ContactPage() {
   return (
-    <>
-      {/* PAGE HERO */}
-      <section className="section-compact">
-        <div className="container text-center">
+    <section className="contact-section">
+      <div className="container">
+        {/* Page Context Header — Centered & Visually Grounded */}
+        <div className="contact-page-header">
           <div className="badge">
             <span className="badge-dot"></span>
             Direct Communication
           </div>
-          <h1 style={{ fontSize: 'clamp(2rem, 3.5vw, 2.75rem)', marginBottom: '0.85rem' }}>
+          <h1 className="contact-page-title">
             Contact <span style={{ color: 'var(--brand-orange)' }}>SmartLine Systems</span>
           </h1>
-          <p style={{ maxWidth: 680, margin: '0 auto', color: 'var(--text-muted)', fontSize: '1.05rem', lineHeight: '1.6' }}>
-            Connect with our engineering and consulting team for project inquiries, technical advisory, and partnership discussions.
+          <p className="contact-page-subtitle">
+            Connect directly with our engineering and consulting team for project inquiries, technical advisory, and partnership discussions.
           </p>
         </div>
-      </section>
 
-      {/* CONTACT GRID */}
-      <section className="section">
-        <div className="container">
-          <div className="grid-2" style={{ gap: '3rem', alignItems: 'start' }}>
-            {/* Form Column */}
-            <Suspense fallback={<div style={{ padding: '2rem' }}>Loading form...</div>}>
-              <ContactFormContent />
-            </Suspense>
+        {/* Symmetrical Two-Column Cards Grid */}
+        <div className="contact-grid-symmetrical">
+          {/* Left Column: Direct Contact Channels Card */}
+          <div className="contact-channels-card">
+            <div className="contact-card-header">
+              <h2 className="contact-card-title">Direct Channels</h2>
+              <p className="contact-card-sub">
+                Reach our team directly for immediate assistance.
+              </p>
+            </div>
 
-            {/* Direct Channels Column */}
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
-              <div className="card">
-                <h3 className="card-title">Telephone &amp; Direct Hotline</h3>
-                <p className="card-desc">Call or reach out directly to our team during business hours for immediate assistance.</p>
-                <div style={{ fontSize: '1.15rem', fontWeight: 700, color: 'var(--brand-orange)' }}>
-                  <a href="tel:+919828477222" style={{ color: 'inherit' }}>+91 98284 77222</a>
+            <div className="contact-channels-list">
+              <div className="contact-channel-item">
+                <div className="contact-channel-icon" aria-hidden="true">
+                  <Phone size={18} />
                 </div>
-                <div style={{ fontSize: '0.8125rem', color: 'var(--text-muted)', marginTop: '0.25rem' }}>
-                  Mon – Sat, 9:00 AM – 8:00 PM IST
-                </div>
-              </div>
-
-              <div className="card">
-                <h3 className="card-title">Official Inquiries &amp; RFP</h3>
-                <p className="card-desc">For formal requests for proposals, contract documentation, and corporate enquiries:</p>
-                <div style={{ fontSize: '1.05rem', fontWeight: 700, color: 'var(--text-primary)' }}>
-                  <a href="mailto:info@smartlinesystems.org">info@smartlinesystems.org</a>
+                <div>
+                  <div className="contact-channel-label">Telephone &amp; Hotline</div>
+                  <div className="contact-channel-value">
+                    <a href="tel:+919828477222">+91 98284 77222</a>
+                  </div>
+                  <div className="contact-channel-sub">Mon – Sat, 9:00 AM – 8:00 PM IST</div>
                 </div>
               </div>
 
-              <div className="card" style={{ backgroundColor: 'var(--bg-subtle)' }}>
-                <h3 className="card-title">Our 24x7 Support</h3>
-                <p className="card-desc">
-                  We provide round-the-clock support for product, sales, and technical enquiries. SmartLine Systems ensures a customer-centred experience with 24x7 operational coverage.
-                </p>
-                <div style={{ fontSize: '0.8125rem', fontWeight: 600, color: 'var(--brand-orange)' }}>
-                  24x7 Operational SLA Coverage
+              <div className="contact-channel-item">
+                <div className="contact-channel-icon" aria-hidden="true">
+                  <Mail size={18} />
+                </div>
+                <div>
+                  <div className="contact-channel-label">Official Inquiries &amp; RFP</div>
+                  <div className="contact-channel-value">
+                    <a href="mailto:info@smartlinesystems.org">info@smartlinesystems.org</a>
+                  </div>
+                  <div className="contact-channel-sub">Response within 24 business hours</div>
+                </div>
+              </div>
+
+              <div className="contact-channel-item">
+                <div className="contact-channel-icon" aria-hidden="true">
+                  <ShieldCheck size={18} />
+                </div>
+                <div>
+                  <div className="contact-channel-label">24x7 Operations Support</div>
+                  <div className="contact-channel-value">24x7 SLA Operational Coverage</div>
+                  <div className="contact-channel-sub">Round-the-clock technical assistance</div>
+                </div>
+              </div>
+
+              <div className="contact-channel-item">
+                <div className="contact-channel-icon" aria-hidden="true">
+                  <MapPin size={18} />
+                </div>
+                <div>
+                  <div className="contact-channel-label">Headquarters</div>
+                  <div className="contact-channel-value">Smartline Systems Tech Park</div>
+                  <div className="contact-channel-sub">Technology &amp; Business Solutions</div>
                 </div>
               </div>
             </div>
+
+            <div className="contact-status-strip">
+              <span className="status-live-dot" aria-hidden="true"></span>
+              <span>Engineering &amp; consulting team online to assist</span>
+            </div>
           </div>
+
+          {/* Right Column: Inquiry Form Card */}
+          <Suspense fallback={<div className="contact-form-card" style={{ padding: '2rem' }}>Loading inquiry form...</div>}>
+            <ContactFormContent />
+          </Suspense>
         </div>
-      </section>
-    </>
+      </div>
+    </section>
   );
 }

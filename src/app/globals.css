@@ -26,9 +26,6 @@
   --bg-subtle: #FFFDF9;             /* Secondary Warm Ivory Background */
   --bg-muted: #F5EFE8;              /* Soft Warm Tag Background */
 
-  /* Global Technical Grid System Tokens */
-  --grid-line: rgba(32, 33, 36, 0.045); /* Extremely subtle 1px blueprint line */
-  --grid-size: 40px;                    /* Consistent square grid spacing */
 
   /* Text & Foreground Palette */
   --text-primary: #202124;          /* Primary Text (Charcoal) */
@@ -99,11 +96,6 @@ body {
   flex-direction: column;
   color: var(--text-secondary);
   background-color: var(--bg-page);
-  background-image: 
-    linear-gradient(to right, var(--grid-line) 1px, transparent 1px),
-    linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px);
-  background-size: var(--grid-size) var(--grid-size);
-  background-position: center top;
   overflow-x: hidden;
   max-width: 100%;
 }
@@ -735,20 +727,6 @@ a:hover {
   isolation: isolate;
 }
 
-/* Technical blueprint grid on left text area */
-.hero-section::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background-image:
-    linear-gradient(to right, var(--grid-line) 1px, transparent 1px),
-    linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px);
-  background-size: var(--grid-size) var(--grid-size);
-  -webkit-mask-image: linear-gradient(to right, #000 0%, #000 35%, rgba(0,0,0,0.3) 50%, transparent 68%);
-  mask-image: linear-gradient(to right, #000 0%, #000 35%, rgba(0,0,0,0.3) 50%, transparent 68%);
-  pointer-events: none;
-  z-index: 1;
-}
 
 /* Bottom-left warm orange crescent swoop inspired by reference */
 .hero-corner-swoop {
@@ -1725,7 +1703,7 @@ textarea.form-control {
 
 .footer-grid {
   display: grid;
-  grid-template-columns: 1.5fr 1fr 1fr 1.2fr;
+  grid-template-columns: 2fr 1fr 1.2fr;
   gap: 2.5rem;
   margin-bottom: 2.5rem;
 }
@@ -1827,10 +1805,7 @@ textarea.form-control {
     -webkit-mask-image: none;
     mask-image: none;
   }
-  /* Remove grid pseudo-element on mobile — it creates visual noise */
-  .hero-section::before {
-    display: none;
-  }
+
   .hero-bg-fade {
     display: none;
   }
@@ -2385,9 +2360,7 @@ textarea.form-control {
     padding: 1.25rem 0 0.25rem 0;
     overflow: hidden;
   }
-  .hero-section::before {
-    display: none;
-  }
+
   .hero-break-mobile {
     display: inline !important;
   }
@@ -2602,4 +2575,186 @@ textarea.form-control {
     padding: 2rem 1rem;
   }
 }
+
+/* ===================================================================
+   CONTACT PAGE — SYMMETRICAL PROPORTIONED HIGH-UX VIEWPORT LAYOUT
+   =================================================================== */
+.contact-section {
+  padding: 1.5rem 0 2rem 0;
+}
+
+.contact-page-header {
+  text-align: center;
+  max-width: 680px;
+  margin: 0 auto 1.35rem auto;
+}
+
+.contact-page-title {
+  font-size: clamp(1.85rem, 2.75vw, 2.25rem);
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: -0.025em;
+  color: var(--text-primary);
+  margin-bottom: 0.35rem;
+}
+
+.contact-page-subtitle {
+  color: var(--text-muted);
+  font-size: 0.9375rem;
+  line-height: 1.5;
+}
+
+.contact-grid-symmetrical {
+  max-width: 1040px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1.12fr;
+  gap: 1.75rem;
+  align-items: stretch;
+}
+
+.contact-channels-card,
+.contact-form-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-card);
+  border-radius: var(--radius-md);
+  padding: 1.35rem 1.6rem;
+  box-shadow: var(--shadow-xs);
+  display: flex;
+  flex-direction: column;
+}
+
+.contact-card-header {
+  margin-bottom: 0.95rem;
+}
+
+.contact-card-title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 0.2rem;
+}
+
+.contact-card-sub {
+  font-size: 0.8125rem;
+  color: var(--text-muted);
+}
+
+.contact-channels-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.contact-channel-item {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  padding: 0.7rem 0.9rem;
+  background: var(--bg-subtle);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-sm);
+  transition: border-color var(--transition-fast), background-color var(--transition-fast);
+}
+
+.contact-channel-item:hover {
+  border-color: var(--brand-orange-border);
+  background-color: var(--brand-orange-light);
+}
+
+.contact-channel-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-xs);
+  background: var(--brand-orange-light);
+  color: var(--brand-orange);
+  flex-shrink: 0;
+}
+
+.contact-channel-label {
+  font-size: 0.725rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+  margin-bottom: 0.1rem;
+}
+
+.contact-channel-value {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  line-height: 1.3;
+}
+
+.contact-channel-value a {
+  color: var(--text-primary);
+  transition: color var(--transition-fast);
+}
+
+.contact-channel-value a:hover {
+  color: var(--brand-orange);
+}
+
+.contact-channel-sub {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  margin-top: 0.1rem;
+}
+
+.contact-status-strip {
+  margin-top: auto;
+  padding-top: 0.85rem;
+  border-top: 1px solid var(--border-light);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.775rem;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.status-live-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background-color: var(--color-success);
+  box-shadow: 0 0 0 3px rgba(35, 134, 54, 0.15);
+  flex-shrink: 0;
+}
+
+.contact-form-card .form-group {
+  margin-bottom: 0.75rem;
+  gap: 0.25rem;
+}
+
+.contact-form-card .form-label {
+  font-size: 0.8125rem;
+}
+
+.contact-form-card .form-control {
+  padding: 0.55rem 0.8rem;
+  font-size: 0.875rem;
+}
+
+.contact-form-card textarea.form-control {
+  min-height: 68px;
+  height: 68px;
+  resize: vertical;
+}
+
+@media (max-width: 860px) {
+  .contact-section {
+    padding: 1.25rem 0 2rem 0;
+  }
+  .contact-grid-symmetrical {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+}
+
+
 

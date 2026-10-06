@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
+import { ArrowRight } from 'lucide-react';
 
 interface ServiceCardProps {
   title: string;
@@ -34,9 +35,7 @@ export default function ServiceCard({
       )}
       <Link href={actionHref} className="card-link">
         {actionText}
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="16" height="16">
-          <path d="M5 12h14M12 5l7 7-7 7" />
-        </svg>
+        <ArrowRight size={16} />
       </Link>
     </div>
   );
